@@ -2,50 +2,50 @@
 
 class Viaje {
     //Atributos
-    private $intCodViaje;
-    private $strDestino;
-    private $intCantPasajeros;
-    private $intCantMaxPasajeros;
-    private $arrayPasajeros = []; //['nombre' =>, 'apellido' =>, 'nroDNI' =>]
+    private $codViaje; //int
+    private $destino; //string
+    private $cantPasajeros; //int
+    private $cantMaxPasajeros; //int
+    private $arrayPasajeros = []; //["Nombre"=>, "Apellido"=>, "DNI"=>]
 
     //Construct
     public function __construct($codViaje, $destino, $cantMaxPasajeros) {
-        $this->intCodViaje = $codViaje;
-        $this->strDestino = $destino;
-        $this->intCantMaxPasajeros = $cantMaxPasajeros;
+        $this->codViaje = $codViaje;
+        $this->destino = $destino;
+        $this->cantMaxPasajeros = $cantMaxPasajeros;
     }
 
     //Getters & Setters
     public function getCodViaje() {
-        return $this->intCodViaje;
+        return $this->codViaje;
     }
 
-    public function setCodViaje($intCodViaje) {
-        $this->intCodViaje = $intCodViaje;
+    public function setCodViaje($codViaje) {
+        $this->codViaje = $codViaje;
     }
 
     public function getDestino() {
-        return $this->strDestino;
+        return $this->destino;
     }
 
-    public function setDestino($strDestino) {
-        $this->strDestino = $strDestino;
+    public function setDestino($destino) {
+        $this->destino = $destino;
     }
 
     public function getCantPasajeros() {
-        return $this->intCantPasajeros;
+        return $this->cantPasajeros;
     }
 
-    public function setCantPasajeros($intCantPasajeros) {
-        $this->intCantPasajeros = $intCantPasajeros;
+    public function setCantPasajeros($cantPasajeros) {
+        $this->cantPasajeros = $cantPasajeros;
     }
 
     public function getCantMaxPasajeros() {
-        return $this->intCantMaxPasajeros;
+        return $this->cantMaxPasajeros;
     }
 
-    public function setCantMaxPasajeros($intCantMaxPasajeros) {
-        $this->intCantMaxPasajeros = $intCantMaxPasajeros;
+    public function setCantMaxPasajeros($cantMaxPasajeros) {
+        $this->cantMaxPasajeros = $cantMaxPasajeros;
     }
 
     public function getArrayPasajeros() {
@@ -95,9 +95,9 @@ class Viaje {
     public function borrarPasajero($pasajero) {
         $bandera = false;
         $arrayBusqueda = $this->getArrayPasajeros();
-        if (in_array($pasajero, $arrayBusqueda)) {
-            $key = array_search($pasajero, $arrayBusqueda);
-            array_splice($arrayBusqueda, $key, 1);
+        if (in_array($pasajero, $arrayBusqueda)) { // Se comprueba si existe el valor $pasajero en $arrayBusqueda
+            $key = array_search($pasajero, $arrayBusqueda); // Se busca el valor $pasajero en $arrayBusqueda, si el valor existe devuelve la primera clave
+            array_splice($arrayBusqueda, $key, 1); // Elimina una parte de $arrayBusqueda y la reemplaza por $key con length = 1
             $this->setArrayPasajeros($arrayBusqueda);
             $bandera = true;
         }
@@ -113,8 +113,8 @@ class Viaje {
     public function modDatos($pasajero, $pasajeroMod) {
         $bandera = false;
         $arrayMod = $this->getArrayPasajeros();
-        if (in_array($pasajero, $arrayMod)) {
-            $key = array_search($pasajero, $arrayMod);
+        if (in_array($pasajero, $arrayMod)) { // Se comprueba si existe el valor $pasajero en $arrayMod
+            $key = array_search($pasajero, $arrayMod); // Se busca el valor $pasajero en $arrayMod, si el valor existe devuelve la primera clave
             $arrayMod[$key] = $pasajeroMod;
             $this->setArrayPasajeros($arrayMod);
             $bandera = true;
