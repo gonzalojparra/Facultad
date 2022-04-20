@@ -90,36 +90,36 @@ class Viaje {
     /**
      * Función para borrar pasajero
      * @param array $pasajero
-     * @return boolean
+     * @return void
      */
-    public function borrarPasajero($pasajero) {
-        $bandera = false;
-        $arrayBusqueda = $this->getArrayPasajeros();
-        if (in_array($pasajero, $arrayBusqueda)) { // Se comprueba si existe el valor $pasajero en $arrayBusqueda
-            $key = array_search($pasajero, $arrayBusqueda); // Se busca el valor $pasajero en $arrayBusqueda, si el valor existe devuelve la primera clave
-            array_splice($arrayBusqueda, $key, 1); // Elimina una parte de $arrayBusqueda y la reemplaza por $key con length = 1
-            $this->setArrayPasajeros($arrayBusqueda);
-            $bandera = true;
+    public function borrarPasajero($deletePasajero) {
+        $pasajerosArr = $this->getArrayPasajeros();
+        $i = 0;
+        while( $i < count( $pasajerosArr ) && ( $pasajerosArr[$i] != $deletePasajero )) {
+            $i = $i + 1;
         }
-        return $bandera;
+        if( $pasajerosArr[$i] == $deletePasajero ) {
+            array_splice( $pasajerosArr, $i, 1);
+        }
+        $this->setArrayPasajeros( $pasajerosArr );
     }
 
     /**
      * Función para modificar datos de un pasajero 
      * @param array $pasajero
      * @param array $pasajeroMod
-     * @return boolean
+     * @return void
      */
     public function modDatos($pasajero, $pasajeroMod) {
-        $bandera = false;
-        $arrayMod = $this->getArrayPasajeros();
-        if (in_array($pasajero, $arrayMod)) { // Se comprueba si existe el valor $pasajero en $arrayMod
-            $key = array_search($pasajero, $arrayMod); // Se busca el valor $pasajero en $arrayMod, si el valor existe devuelve la primera clave
-            $arrayMod[$key] = $pasajeroMod;
-            $this->setArrayPasajeros($arrayMod);
-            $bandera = true;
+        $arrPasajeros = $this->getArrayPasajeros();
+        $i = 0;
+        while( $i < count( $arrPasajeros ) && ( $arrPasajeros[$i] != $pasajero )) {
+            $i = $i + 1;
         }
-        return $bandera;
+        if( $arrPasajeros[$i] == $pasajero ) {
+            $arrPasajeros[$i] = $pasajeroMod;
+        }
+        $this->setArrayPasajeros($arrPasajeros);
     }
 
     /**
