@@ -5,7 +5,7 @@ class Viaje {
     private $codViaje; //int
     private $destino; //string
     private $cantMaxPasajeros; //int
-    private $arrayPasajeros = []; //["Nombre"=>, "Apellido"=>, "DNI"=>]
+    private $arrayPasajeros = []; //["Nombre"=>, "Apellido"=>, "DNI"=>, "Telefono"=>]
     private $responsableViaje; //objeto de la clase ResponsableV
 
     // Constructor
