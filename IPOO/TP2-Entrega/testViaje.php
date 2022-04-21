@@ -30,7 +30,7 @@ $objResponsable = new ResponsableV( $numEmpleado, $numLicencia, $nombre, $apelli
 $objViaje = new Viaje( $codigoViaje, $destinoViaje, $cantMaxAsientos, $objResponsable );
 
 /**
-* Función para seleccionar opción en el programa testViaje.php
+* Método para seleccionar opción en el programa testViaje.php
 * @param void
 * @return string
 */
@@ -51,7 +51,7 @@ Seleccione la opción deseada: ";
 }
 
 /**
- * Función para ingresar datos de un pasajero
+ * Método para ingresar datos de un pasajero
  * @param void
  * @return array
  */
@@ -71,7 +71,8 @@ function ingresarDatos() {
 
 //Proceso:
 do {
-    echo seleccionarOpcion(); // Se muestra por pantalla el menú de opciones
+    // Se muestra por pantalla el menú de opciones
+    echo seleccionarOpcion();
     $seleccion = trim(fgets(STDIN));
     // Se utiliza switch para el menú selector, la función sirve para comparar una misma variable con distintos valores (1, 2, 3, etc.)
     switch ($seleccion) {

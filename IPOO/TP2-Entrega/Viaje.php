@@ -1,14 +1,14 @@
 <?php
 
 class Viaje {
-    //Atributos
+    // Atributos
     private $codViaje; //int
     private $destino; //string
     private $cantMaxPasajeros; //int
     private $arrayPasajeros = []; //["Nombre"=>, "Apellido"=>, "DNI"=>]
     private $responsableViaje; //objeto de la clase ResponsableV
 
-    //Construct
+    // Constructor
     public function __construct( $codViaje, $destino, $cantMaxPasajeros, $responsableViaje ) {
         $this->codViaje = $codViaje;
         $this->destino = $destino;
@@ -16,7 +16,7 @@ class Viaje {
         $this->responsableViaje = $responsableViaje;
     }
 
-    //Getters & Setters
+    // Getters & Setters
     public function getCodViaje() {
         return $this->codViaje;
     }
@@ -53,7 +53,7 @@ class Viaje {
     }
     
     /**
-     * Función para conocer si existen lugares disponibles
+     * Método para verificar lugares disponibles en el viaje
      * @param void
      * @return boolean
      */
@@ -66,7 +66,7 @@ class Viaje {
     }
 
     /**
-     * Función para agregar un pasajero
+     * Método para agregar un pasajero
      * @param object $objPasajero
      * @return boolean
      */
@@ -78,9 +78,9 @@ class Viaje {
 
         $dniComparar = $objPasajero->getNumDNI();
         while( $noEncontrado && $i < count($newArray) ) {
-            $pasajeroSeleccionado = $newArray[$i];
-            $dniSeleccionado = $pasajeroSeleccionado->getNumDNI();
-            if( $dniSeleccionado === $dniComparar ) {
+            $pasajero = $newArray[$i];
+            $dni = $pasajero->getNumDNI();
+            if( $dni === $dniComparar ) {
                 $noEncontrado = false;
             }
             $i++;
@@ -100,7 +100,7 @@ class Viaje {
     }
 
     /**
-     * Función para borrar pasajero
+     * Método que borra pasajero
      * @param int $dni
      * @return boolean
      */
@@ -112,9 +112,9 @@ class Viaje {
         $noEncontrado = true;
 
         while( $noEncontrado || $i < count( $arrayPasajeros )) {
-            $pasajeroSeleccionado = $arrayPasajeros[$i];
-            $dniSeleccionado = $pasajeroSeleccionado->getNumDNI();
-            if( $dniSeleccionado == $dni ) {
+            $pasajero = $arrayPasajeros[$i];
+            $dni = $pasajero->getNumDNI();
+            if( $dni == $dni ) {
                 $noEncontrado = false;
                 $posicion = $i;
             }
@@ -140,10 +140,9 @@ class Viaje {
     }
 
     /**
-     * Función para modificar datos de un pasajero 
-     * @param 
-     * @param 
-     * @return 
+     * Método que modifica datos de un pasajero 
+     * @param int $dni
+     * @return boolean
      */
     public function modDatos( $dni ) {
         $bandera = false;
@@ -153,9 +152,9 @@ class Viaje {
         $posicion = 0;
 
         while( $noEncontrado && $i < count($arrayPasajeros) ) {
-            $pasajeroSeleccionado = $arrayPasajeros[$i];
-            $dniSeleccionado = $pasajeroSeleccionado->getNumDNI();
-            if( $dni == $dniSeleccionado ) {
+            $pasajero = $arrayPasajeros[$i];
+            $dni = $pasajero->getNumDNI();
+            if( $dni == $dni ) {
                 $noEncontrado = false;
                 $posicion = $i;
                 $bandera = true;
@@ -171,7 +170,7 @@ class Viaje {
     }
 
     /**
-     * Función para modificar los datos del pasajero
+     * Método que modifica un dato específico del pasajero
      * @param object $objPasajero
      * @return object
      */
@@ -212,7 +211,7 @@ class Viaje {
     }
 
     /**
-     * Función para desplegar datos de los pasajeros
+     * Método que despliega datos de los pasajeros
      * @param void
      * @return string
      */
@@ -226,7 +225,7 @@ class Viaje {
         return $pasajerosStr;
     }
 
-    //toString
+    // toString
     public function __toString() {
         $pasajeros = $this->strPasajeros();
         $arrayPasajeros = $this->getArrayPasajeros();
