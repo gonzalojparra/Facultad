@@ -147,21 +147,21 @@ class Viaje {
     public function modDatos( $dni ) {
         $bandera = false;
         $arrayPasajeros = $this->getArrayPasajeros();
-        $noEncontrado = true;
+        $encontrado = false;
         $i = 0;
         $posicion = 0;
 
-        while( $noEncontrado && $i < count($arrayPasajeros) ) {
+        while( $encontrado && $i < count($arrayPasajeros) ) {
             $pasajero = $arrayPasajeros[$i];
             $dni = $pasajero->getNumDNI();
             if( $dni == $dni ) {
-                $noEncontrado = false;
+                $encontrado = true;
                 $posicion = $i;
                 $bandera = true;
             }
             $i++;
         }
-        if( !$noEncontrado ) {
+        if( !$encontrado ) {
             $objPasajero = $arrayPasajeros[$posicion];
             $this->modificarPasajero($objPasajero);
             $arrayPasajeros[$posicion] = $objPasajero;
@@ -180,7 +180,7 @@ class Viaje {
         2. Modificar apellido\n
         3. Modificar DNI\n
         4. Modificar teléfono\n
-        5. Salir";
+        5. Salir\n";
         do {
             echo $menuStr;
             $seleccion = trim(fgets(STDIN));
