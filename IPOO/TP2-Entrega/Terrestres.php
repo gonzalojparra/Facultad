@@ -4,10 +4,11 @@ class Terrestres extends Viaje {
     // Atributos
     private $importe;
     private $idaOVuelta;
-    private $comodidadAsiento;
+    private $comodidadAsiento; // Semicama o cama
 
     // Constructor
     public function __construct( $codViaje, $destino, $cantMaxPasajeros, $responsableViaje, $importe, $idaOVuelta, $comodidadAsiento ) {
+        // Llama al constructor de la clase padre
         parent::__construct( $codViaje, $destino, $cantMaxPasajeros, $responsableViaje );
         $this->importe = $importe;
         $this->idaOVuelta = $idaOVuelta;
@@ -38,6 +39,7 @@ class Terrestres extends Viaje {
 
     // toString
     public function __toString() {
+        // Se asigna el toString de la clase padre a una variable
         $strPadre = parent::__toString();
         $str = "
         Importe: {$this->getImporte()}.\n
