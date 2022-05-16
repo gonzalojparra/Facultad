@@ -37,6 +37,24 @@ class Terrestres extends Viaje {
         $this->comodidadAsiento = $comodidadAsiento;
     }
 
+    /**
+     * Calcula el importe del pasaje
+     * Si el asiento es cama, se incrementa un 25%
+     * Si el viaje es de ida y vuelta, se incrementa un 50%
+     * @param void
+     * @return float
+     */
+    public function calcImporte() {
+        $importe = $this->getImporte();
+        if( $this->getComodidadAsiento() == 'Cama' ){
+            $importe *= 1.25;
+        }
+        if( $this->getIdaOVuelta() == 'Ida y Vuelta' ){
+            $importe *= 1.5;
+        }
+        return $importe;
+    }
+
     // toString
     public function __toString() {
         // Se asigna el toString de la clase padre a una variable

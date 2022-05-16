@@ -64,6 +64,27 @@ class Aereos extends Viaje {
         $this->cantEscalas = $cantEscalas;
     }
 
+    /**
+     * Calcula el importe del pasaje
+     * Si el viaje es primera clase y sin escalas, se incrementa un 40%
+     * Si además de ser primera clase, tiene escalas, se incrementa un 60%
+     * Si el viaje es de ida y vuelta, se incrementa un 50%
+     * @param void
+     * @return float
+     */
+    public function calcImporte() {
+        $importe = $this->getImporte();
+        if( ($this->getCatAsiento() == 'Primera Clase') && ($this->getCantEscalas() == 0) ){
+            $importe *= 1.4;
+        } elseif( ($this->getCatAsiento() == 'Primera Clase') && ($this->getCantEscalas() > 0) ){
+            $importe *= 1.6;
+        }
+        if( $this->getIdaOVuelta() == 'Ida y Vuelta' ){
+            $importe *= 1.5;
+        }
+        return $importe;
+    }
+
     // toString
     public function __toString() {
         // Se asigna el toString de la clase padre a una variable
@@ -77,4 +98,5 @@ class Aereos extends Viaje {
         Cantidad de escalas: {$this->getCantEscalas()}.\n";
         return "{$strPadre}{$str}";
     }
+
 }

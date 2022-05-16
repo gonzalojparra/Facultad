@@ -224,7 +224,7 @@ class Viaje {
         }
         return $pasajerosStr;
     }
-
+    
     // toString
     public function __toString() {
         $pasajeros = $this->strPasajeros();
