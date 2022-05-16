@@ -52,7 +52,7 @@ class Empresa {
         $noEncontrado = true;
         while( $noEncontrado && ($i < count($viajesArr)) ) {
             $viaje = $viajesArr[$i];
-            $lugarDisponible = $viaje->lugarDisponible();
+            $lugarDisponible = $viaje->hayPasajesDisponible();
             if( $lugarDisponible ) {
                 $noEncontrado = false;
                 $posicion = $i; // Se guarda la posición donde se encontró el viaje con lugar disponible

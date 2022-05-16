@@ -57,7 +57,7 @@ class Viaje {
      * @param void
      * @return boolean
      */
-    public function lugarDisponible() {
+    public function hayPasajesDisponible() {
         $bandera = true;
         if ($this->getCantMaxPasajeros() <= (count($this->getArrayPasajeros()))) {
             $bandera = false;

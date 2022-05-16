@@ -115,7 +115,7 @@ function viaje( $objViaje ) {
                 break;
             case 4:
                 // Agregar pasajero
-                if($objViaje->lugarDisponible()) {
+                if($objViaje->hayPasajesDisponible()) {
                     echo "Ingrese los datos del pasajero: \n";
                     $objPasajero = ingresarDatos();
                     if($objViaje->agregarPasajero($objPasajero)) {
