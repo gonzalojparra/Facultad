@@ -71,6 +71,8 @@ class Empresa {
 
     /**
      * Método que busca un viaje
+     * @param int $numViaje
+     * @return int
      */
     public function buscarViaje( $numViaje ) {
         $i = 0;
