@@ -106,38 +106,38 @@ class Pasajero {
      * @return array
     */
     public static function listar( $condicion = '' ){
-	    $arregloPasajeros = null;
-		$bd = new BaseDatos();
-		$consulta = "SELECT * FROM viaje";
+        $arregloPasajeros = null;
+        $bd = new BaseDatos();
+        $consulta = "SELECT * FROM viaje";
 
         // Si la condición no está vacia, se arma un nuevo string para la consulta
-		if( $condicion != '' ){
-		    $consulta = $consulta. ' WHERE ' .$condicion;
-		}
-		if( $bd->Iniciar() ){
-			if( $bd->Ejecutar($consulta) ){				
-				$arregloPasajeros = array();
-				while( $row2 = $bd->Registro() ){
-					$rdocumento = $row2['rdocumento'];
-					$pnombre = $row2['pnombre'];
-					$papellido = $row2['papellido'];
+        if( $condicion != '' ){
+            $consulta = $consulta. ' WHERE ' .$condicion;
+        }
+        if( $bd->Iniciar() ){
+            if( $bd->Ejecutar($consulta) ){				
+                $arregloPasajeros = array();
+                while( $row2 = $bd->Registro() ){
+                    $rdocumento = $row2['rdocumento'];
+                    $pnombre = $row2['pnombre'];
+                    $papellido = $row2['papellido'];
                     $ptelefono = $row2['ptelefono'];
                     $idviaje = $row2['idviaje'];
-                    
+
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
-					$pasajero = new Pasajero();
-					$pasajero->cargar( $rdocumento, $pnombre, $papellido, $ptelefono, $idviaje );
-					array_push( $arregloPasajeros, $pasajero );
-				}
-		 	} else {
+                    $pasajero = new Pasajero();
+                    $pasajero->cargar( $rdocumento, $pnombre, $papellido, $ptelefono, $idviaje );
+                    array_push( $arregloPasajeros, $pasajero );
+                }
+            } else {
                 // $this->setMensajeOperacion( $bd->getError() );
                 Pasajero::setMensajeOperacion( $bd->getError() );
-			}
-		 } else {
+            }
+        } else {
             // $this->setMensajeOperacion( $bd->getError() );
             Pasajero::setMensajeOperacion( $bd->getError() );
-		 }
-		return $arregloPasajeros;
+        }
+        return $arregloPasajeros;
 	}
 
     public function insertar() {

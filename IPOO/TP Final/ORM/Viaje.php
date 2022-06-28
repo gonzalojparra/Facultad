@@ -149,21 +149,21 @@ class Viaje {
      * @return array
     */
     public static function listar( $condicion = '' ){
-	    $arregloViaje = null;
-		$bd = new BaseDatos();
-		$consulta = "SELECT * FROM viaje";
+        $arregloViaje = null;
+        $bd = new BaseDatos();
+        $consulta = "SELECT * FROM viaje";
 
         // Si la condición no está vacia, se arma un nuevo string para la consulta
-		if( $condicion != '' ){
-		    $consulta = $consulta. ' WHERE ' .$condicion;
-		}
-		if( $bd->Iniciar() ){
-			if( $bd->Ejecutar($consulta) ){				
-				$arregloViaje = array();
-				while( $row2 = $bd->Registro() ){
-					$idviaje = $row2['idviaje'];
-					$vdestino = $row2['vdestino'];
-					$vcantmaxpasajeros = $row2['vcantmaxpasajeros'];
+        if( $condicion != '' ){
+            $consulta = $consulta. ' WHERE ' .$condicion;
+        }
+        if( $bd->Iniciar() ){
+            if( $bd->Ejecutar($consulta) ){				
+                $arregloViaje = array();
+                while( $row2 = $bd->Registro() ){
+                    $idviaje = $row2['idviaje'];
+                    $vdestino = $row2['vdestino'];
+                    $vcantmaxpasajeros = $row2['vcantmaxpasajeros'];
                     $idobjempresa = $row2['idempresa'];
                     $robjnumeroempleado = $row2['rnumeroempleado'];
                     $vimporte = $row2['vimporte'];
@@ -171,20 +171,20 @@ class Viaje {
                     $idayvuelta = $row2['idayvuelta'];
 
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
-					$viaje = new Viaje();
-					$viaje->cargar( $idviaje, $vdestino, $vcantmaxpasajeros, $idobjempresa, $robjnumeroempleado, $vimporte, $tipoasiento, $idayvuelta );
-					array_push( $arregloViaje, $viaje );
-				}
-		 	} else {
+                    $viaje = new Viaje();
+                    $viaje->cargar( $idviaje, $vdestino, $vcantmaxpasajeros, $idobjempresa, $robjnumeroempleado, $vimporte, $tipoasiento, $idayvuelta );
+                    array_push( $arregloViaje, $viaje );
+                }
+            } else {
                 // $this->setMensajeOperacion( $bd->getError() );
                 Viaje::setMensajeOperacion( $bd->getError() );
-			}
-		 } else {
+            }
+        } else {
             // $this->setMensajeOperacion( $bd->getError() );
             Viaje::setMensajeOperacion( $bd->getError() );
-		 }
-		return $arregloViaje;
-	}
+        }
+        return $arregloViaje;
+    }
 
     public function insertar() {
         $bd = new BaseDatos();

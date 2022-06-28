@@ -87,36 +87,36 @@ class Empresa {
      * @return array
     */
     public static function listar( $condicion = '' ){
-	    $arregloEmpresa = null;
-		$bd = new BaseDatos();
-		$consulta = "SELECT * FROM empresa";
+        $arregloEmpresa = null;
+        $bd = new BaseDatos();
+        $consulta = "SELECT * FROM empresa";
 
         // Si la condición no está vacia, se arma un nuevo string para la consulta
-		if( $condicion != '' ){
-		    $consulta = $consulta. ' WHERE ' .$condicion;
-		}
-		if( $bd->Iniciar() ){
-			if( $bd->Ejecutar($consulta) ){				
-				$arregloEmpresa = array();
-				while( $row2 = $bd->Registro() ){
-					$idempresa = $row2['idempresa'];
-					$enombre = $row2['enombre'];
-					$edireccion = $row2['edireccion'];
+        if( $condicion != '' ){
+            $consulta = $consulta. ' WHERE ' .$condicion;
+        }
+        if( $bd->Iniciar() ){
+            if( $bd->Ejecutar($consulta) ){				
+                $arregloEmpresa = array();
+                while( $row2 = $bd->Registro() ){
+                    $idempresa = $row2['idempresa'];
+                    $enombre = $row2['enombre'];
+                    $edireccion = $row2['edireccion'];
 
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
-					$empresa = new Empresa();
-					$empresa->cargar( $idempresa, $enombre, $edireccion );
-					array_push( $arregloEmpresa, $empresa );
-				}
-		 	} else {
+                    $empresa = new Empresa();
+                    $empresa->cargar( $idempresa, $enombre, $edireccion );
+                    array_push( $arregloEmpresa, $empresa );
+                }
+            } else {
                 // $this->setMensajeOperacion( $bd->getError() );
                 Empresa::setMensajeOperacion( $bd->getError() );
-			}
-		 } else {
+            }
+        } else {
             // $this->setMensajeOperacion( $bd->getError() );
             Empresa::setMensajeOperacion( $bd->getError() );
-		 }
-		return $arregloEmpresa;
+        }
+        return $arregloEmpresa;
 	}
 
     public function insertar() {

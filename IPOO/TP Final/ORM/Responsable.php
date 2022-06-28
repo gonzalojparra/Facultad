@@ -98,38 +98,38 @@ class Responsable {
      * @return array
     */
     public static function listar( $condicion = '' ){
-	    $arregloResponsable = null;
-		$bd = new BaseDatos();
-		$consulta = "SELECT * FROM responsable";
+        $arregloResponsable = null;
+        $bd = new BaseDatos();
+        $consulta = "SELECT * FROM responsable";
 
         // Si la condición no está vacia, se arma un nuevo string para la consulta
-		if( $condicion != '' ){
-		    $consulta = $consulta. ' WHERE ' .$condicion;
-		}
-		if( $bd->Iniciar() ){
-			if( $bd->Ejecutar($consulta) ){				
-				$arregloResponsable = array();
-				while( $row2 = $bd->Registro() ){
-					$numEmpleado = $row2['rnumeroempleado'];
-					$numLicencia = $row2['rnumerolicencia'];
-					$nombre = $row2['rnombre'];
+        if( $condicion != '' ){
+            $consulta = $consulta. ' WHERE ' .$condicion;
+        }
+        if( $bd->Iniciar() ){
+            if( $bd->Ejecutar($consulta) ){				
+                $arregloResponsable = array();
+                while( $row2 = $bd->Registro() ){
+                    $numEmpleado = $row2['rnumeroempleado'];
+                    $numLicencia = $row2['rnumerolicencia'];
+                    $nombre = $row2['rnombre'];
                     $apellido = $row2['rapellido'];
-
+                    
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
-					$responsable = new Responsable();
-					$responsable->cargar( $numEmpleado, $numLicencia, $nombre, $apellido );
-					array_push( $arregloResponsable, $responsable );
-				}
-		 	} else {
+                    $responsable = new Responsable();
+                    $responsable->cargar( $numEmpleado, $numLicencia, $nombre, $apellido );
+                    array_push( $arregloResponsable, $responsable );
+                }
+            } else {
                 // $this->setMensajeOperacion( $bd->getError() );
                 Responsable::setMensajeOperacion( $bd->getError() );
-			}
-		 } else {
+            }
+        } else {
             // $this->setMensajeOperacion( $bd->getError() );
             Responsable::setMensajeOperacion( $bd->getError() );
-		 }
-		return $arregloResponsable;
-	}
+        }
+        return $arregloResponsable;
+    }
 
     public function insertar() {
         $bd = new BaseDatos();
