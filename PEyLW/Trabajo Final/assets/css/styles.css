@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(12,3,51,0.3),rgba(12,3,51,0.3));
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo {
+    width: 50px;
+}
+
+.nav_links {
+    padding: 12px 0;
+}
+
+.nav_links li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav_links li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 0;
+    margin-left: 20px;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Efecto underline links de navbar */
+.nav_links li a::after {
+    content: '';
+    background: #9604cf;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.1s;
+}
+
+.nav_links li a:hover::after {
+    width: 100%;
+}
+
+/* Titulo */
+.content {
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 150px;
+    -webkit-text-stroke: 2.3px #fff;
+    color: transparent;
+    font-weight: 600;
+    transition: 0.15s;
+}
+
+.content h1:hover {
+    color: #fff;
+}
+
+.content a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    border: 2px solid #fff;
+    padding: 14px /* Top and bottom */ 70px /* Left and right */;
+    border-radius: 50px; /* Forma ovalada */
+    margin-top: 15px;
+}
+
+.background-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* -1 para que quede en el fondo */
+}
+
+button {
+    display: inline-block;
+    background-color: hsl(0, 0%, 17%);
+    color: #fff;
+    padding: .5rem 1rem;
+    font-weight: 500;
+    transition: .1s;
+}
+
+.button:hover {
+    color: rgb(99, 12, 150);
+    transition: 0.2s;
+}
+
+/* Responsive */
+@media (min-aspect-ratio: 16/9) {
+    .background-video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .background-video {
+        width: auto;
+        height: 100%;
+    }
+}
