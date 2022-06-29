@@ -2,14 +2,14 @@ CREATE DATABASE bdviajes;
 use bdviajes;
 
 CREATE TABLE empresa(
-    idempresa bigint /* AUTO_INCREMENT */,
+    idempresa bigint AUTO_INCREMENT,
     enombre varchar(150),
     edireccion varchar(150),
     PRIMARY KEY (idempresa)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE responsable (
-    rnumeroempleado bigint,
+    rnumeroempleado bigint AUTO_INCREMENT,
     rnumerolicencia bigint,
     rnombre varchar(150), 
     rapellido  varchar(150),
@@ -17,7 +17,7 @@ CREATE TABLE responsable (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE viaje (
-    idviaje bigint,
+    idviaje bigint AUTO_INCREMENT,
     vdestino varchar(150),
     vcantmaxpasajeros int,
     idempresa bigint,

@@ -10,8 +10,8 @@ class Responsable {
 
     // Constructor
     public function __construct(){
-        $this->numEmpleado = 0;
-        $this->numLicencia = 0;
+        $this->numEmpleado = '';
+        $this->numLicencia = '';
         $this->nombre = '';
         $this->apellido = '';
         $this->mensajeOperacion = '';

@@ -14,8 +14,6 @@ class Pasajero {
         $this->rdocumento = '';
         $this->pnombre = '';
         $this->papellido = '';
-        $this->ptelefono = '';
-        $this->objviaje = new Viaje();
         $this->mensajeOperacion = '';
     }
 
@@ -87,7 +85,13 @@ class Pasajero {
                     $this->setPnombre( $row2['pnombre'] );
                     $this->setPapellido( $row2['papellido'] );
                     $this->setPtelefono( $row2['ptelefono'] );
-                    $this->setObjviaje( $row2['idviaje'] );
+                    $idViaje = $row2['idviaje'];
+                    $objViaje = new Viaje();
+                    if( $objViaje->buscar($idViaje) ){
+                        $this->setObjviaje( $objViaje );
+                    } else {
+                        $this->setObjviaje( '' );
+                    }
                     $bandera = true;
                 }
             } else {
@@ -108,7 +112,7 @@ class Pasajero {
     public static function listar( $condicion = '' ){
         $arregloPasajeros = null;
         $bd = new BaseDatos();
-        $consulta = "SELECT * FROM viaje";
+        $consulta = "SELECT * FROM pasajero";
 
         // Si la condición no está vacia, se arma un nuevo string para la consulta
         if( $condicion != '' ){
@@ -142,7 +146,7 @@ class Pasajero {
 
     public function insertar() {
         $bd = new BaseDatos();
-        $consulta = "INSERT INTO pasajero VALUES ({$this->getRdocumento()}, {$this->getPnombre()}, {$this->getPapellido()}, {$this->getPtelefono()}, {$this->getObjviaje()})";
+        $consulta = "INSERT INTO pasajero VALUES ('{$this->getRdocumento()}', '{$this->getPnombre()}', '{$this->getPapellido()}', {$this->getPtelefono()}, {$this->getObjviaje()})";
         $bandera = false;
 
         if( $bd->Iniciar() ){
@@ -159,7 +163,7 @@ class Pasajero {
 
     public function modificar() {
         $bd = new BaseDatos();
-        $consulta = "UPDATE pasajero SET rdocumento = {$this->getRdocumento()}, pnombre = {$this->getPnombre()}, papellido = {$this->getPapellido()}, ptelefono = {$this->getPtelefono()}, idviaje = {$this->getObjViaje()}";
+        $consulta = "UPDATE pasajero SET rdocumento = '{$this->getRdocumento()}', pnombre = '{$this->getPnombre()}', papellido = '{$this->getPapellido()}', ptelefono = {$this->getPtelefono()}, idviaje = {$this->getObjViaje()}";
         $bandera = false;
 
         if( $bd->Iniciar() ){

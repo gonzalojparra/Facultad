@@ -18,8 +18,6 @@ class Viaje {
         $this->idviaje = '';
         $this->vdestino = '';
         $this->cantmaxpasajeros = '';
-        $this->idobjempresa = new Empresa();
-        $this->objresponsable = new Responsable();
         $this->vimporte = '';
         $this->tipoasiento = '';
         $this->idayvuelta = '';
@@ -126,8 +124,20 @@ class Viaje {
                     $this->setIdviaje( $idviaje );
                     $this->setVdestino( $row2['vdestino'] );
                     $this->setCantmaxpasajeros( $row2['vcantmaxpasajeros'] );
-                    $this->setIdobjempresa( $row2['idempresa'] );
-                    $this->setObjresponsable( $row2['rnumeroempleado'] );
+
+                    $objEmpresa = new Empresa();
+                    if( $objEmpresa->buscar($row2['idempresa'])){
+                        $this->setIdobjempresa($objEmpresa);
+                    } else {
+                        $this->setIdobjempresa('');
+                    }
+                    $objResponsable = new Responsable();
+                    if( $objResponsable->buscar($row2['rnumeroempleado']) ){
+                        $this->setObjresponsable( $objResponsable );
+                    } else {
+                        $this->setObjresponsable('');
+                    }
+
                     $this->setVimporte( $row2['vimporte'] );
                     $this->setTipoasiento( $row2['tipoAsiento'] );
                     $this->setIdayvuelta( $row2['idayvuelta'] );
@@ -167,7 +177,7 @@ class Viaje {
                     $idobjempresa = $row2['idempresa'];
                     $robjnumeroempleado = $row2['rnumeroempleado'];
                     $vimporte = $row2['vimporte'];
-                    $tipoasiento = $row2['tipoasiento'];
+                    $tipoasiento = $row2['tipoAsiento'];
                     $idayvuelta = $row2['idayvuelta'];
 
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
@@ -189,9 +199,9 @@ class Viaje {
     public function insertar() {
         $bd = new BaseDatos();
         $idEmpresa = $this->getIdobjempresa();
-        /* $idEmpresa = $objEmpresa->getIdempresa(); */
+        /* $idEmpresa = $this->getIdobjempresa()->getIdempresa();
+        $numResponsable = $this->getObjresponsable()->getNumEmpleado(); */
         $numResponsable = $this->getObjresponsable();
-        /* $numResponsable = $objResponsable->getNumEmpleado(); */
         $consulta = "INSERT INTO viaje VALUES ({$this->getIdviaje()}, '{$this->getVdestino()}', {$this->getCantmaxpasajeros()}, $idEmpresa, $numResponsable, {$this->getVimporte()}, '{$this->getTipoasiento()}', '{$this->getIdayvuelta()}')";
         
         $bandera = false;
@@ -224,9 +234,9 @@ class Viaje {
         return $bandera;
     }
 
-    public function eliminar( $id ){
+    public function eliminar() {
         $bd = new BaseDatos();
-        $consulta = "DELETE FROM viaje WHERE idviaje = $id";
+        $consulta = "DELETE FROM viaje WHERE idviaje = {$this->getIdviaje()}";
         $bandera = false;
         if( $bd->Iniciar() ){
             if( $bd->Ejecutar($consulta) ){
