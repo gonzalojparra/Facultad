@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+    <!-- Boxicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/sections.css">
+    <title>BeatStore - Sections</title>
+</head>
+<body>
+    
+    <header class="header">
+            <ul class="nav_links">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="#">TRACKS</a></li>
+                <li><a href="#destacado">DESTACADO</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li class="submenu">
+                    <div class="four columns">
+                        <i class="bx bx-shopping-bag" id="carrito-logo"></i>
+                    </div>
+                    <div class="two columns u-pull-right" id="carrito">
+                        <table id="lista-carrito" class="u-full-width">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <a href="#" id="vaciar-carrito" class="u-full-width vaciar__carrito">VACIAR CARRITO</a>
+                    </div>
+                </li>
+                <li><button class="switch" id="switch">
+                    <span><i class='bx bx-sun'></i></span>
+                    <span><i class='bx bx-moon'></i></span>
+                </button></li>
+            </ul>
+    </header>
+
+    <main>
+
+
+        <!-- Beats populares -->
+        <section class="tracks section container" id="tracks1">
+            <h2 class="section__title">
+                Beats populares
+            </h2>
+
+            <div class="tracks__container grid">
+                <article class="tracks__card">
+                    <span class="tracks__tag">Sale</span>
+
+                    <img src="../assets/media/yeat3.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Yeat Type Beat - Rackz</h3>
+                        <span class="tracks__price">$30 | Exclusive License</span>
+                    </div>
+                    
+                    <button class="button tracks__button" data-id="1">
+                        AÑADIR AL CARRITO
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <span class="tracks__tag">Sale</span>
+
+                    <img src="../assets/media/drake1.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Drake Type Beat - Heaven</h3>
+                        <span class="tracks__price">$30 | Exclusive License</span>
+                    </div>
+                    
+                    <button class="button tracks__button" data-id="2">
+                        AÑADIR AL CARRITO
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <span class="tracks__tag">Sale</span>
+
+                    <img src="../assets/media/jcole1.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">J. Cole Type Beat - Alive</h3>
+                        <span class="tracks__price">$30 | Exclusive License</span>
+                    </div>
+                    
+                    <button class="button tracks__button" data-id="3">
+                        AÑADIR AL CARRITO
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <span class="tracks__tag">Sale</span>
+
+                    <img src="../assets/media/carti1.png" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Carti Type Beat - Rockstar</h3>
+                        <span class="tracks__price">$30 | Exclusive License</span>
+                    </div>
+                    
+                    <button class="button tracks__button" data-id="4">
+                        AÑADIR AL CARRITO
+                    </button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Tracks -->
+        <section class="tracks section container" id="tracks2">
+            <h2 class="section__title">
+                Tracks
+            </h2>
+
+            <div class="tracks__container grid">
+                <article class="tracks__card">
+                    <img src="../assets/media/track1.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Duki Type Beat - Sin Mirar</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <img src="../assets/media/track2.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Asan Type Beat - Solo</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <img src="../assets/media/track3.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Paulo Type Beat - Mind</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <img src="../assets/media/track4.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Wos Type Beat - Oscuro</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <img src="../assets/media/track5.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Khea Type Beat - Otra Vez</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+
+                <article class="tracks__card">
+                    <img src="../assets/media/track6.png" alt="" class="tracks__img">
+
+                    <div class="tracks__data">
+                        <h3 class="tracks__title">Duki Type Beat - Sálvame</h3>
+                        <span class="tracks__price">$20 | Lease</span>
+                    </div>
+
+                    <button class="button tracks__button">
+                        <i class='bx bxs-shopping-bag' ></i>
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Destacado -->
+        <section class="destacado section container" id="destacado">
+            <a href="#destacado"></a>
+            <div class="destacado__container grid">
+                <div class="destacado__data">
+                    <h2 class="section__title destacado__section-title">
+                        Destacado
+                    </h2>
+
+                    <h1 class="destacado__title">
+                        La vuelta del año
+                    </h1>
+
+                    <p class="destacado__description">
+                        El cantante cordobés de música urbana Paulo Londra, de 23 años, quien tuvo que poner una pausa en su carrera en 2020 a raíz de un conflicto legal, volvió a la escena musical con su nuevo sencillo "Plan A".<br>
+                        La canción fue producida por el productor argentino Federico Vindver, radicado en Los Ángeles, California.<br>
+                        Por si se estarán preguntando, sí, la instrumental se dio a conocer gracias a BeatStore.
+                    </p>
+
+                    <a href="https://www.youtube.com/watch?v=dmW68lzaaqs" target="blank" class="button button--small">Escuchalo Ya</a>
+                </div>
+
+                <div class="destacado__images">
+                    <img src="../assets/media/londra.png" alt="" class="destacado__img">
+                    <div class="destacado__square"></div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+
+        <div class="footer-content">
+            <h3 class="section__title">Social Media</h3>
+            <ul class="socials">
+                <li>
+                    <a href="https://www.youtube.com/user/OfficialBeatStars" target="_blank">
+                    <i class='bx bxl-youtube'></i>
+                    <span>YouTube</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/gonzaparra_/" target="_blank">
+                    <i class='bx bxl-instagram'></i>
+                    <span>Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/beatstars/" target="_blank">
+                    <i class='bx bxl-facebook'></i>
+                    <span>Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/BeatStars" target="_blank">
+                    <i class='bx bxl-twitter'></i>
+                    <span>Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://soundcloud.com/beatstars" target="_blank">
+                    <i class='bx bxl-soundcloud'></i>
+                    <span>SoundCloud</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="copyright">
+            <span>© 2022 BeatStore, Inc. Argentina</span>
+        </div>
+
+    </footer>
+
+    <!-- Javascript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
