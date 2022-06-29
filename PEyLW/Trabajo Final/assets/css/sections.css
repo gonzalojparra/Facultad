@@ -289,20 +289,20 @@ body.dark .socials a:hover {
     background-color: hsl(31, 100%, 70%);
 }
 
-.u-full-width {
+.full-width {
     width: 85%;
     box-sizing: border-box;
 }
 
-.two.columns {
+.dos-columnas {
     width: 13.3333333333%;
 }
 
-.four.columns {
+.cuatro-columnas {
     width: 30.6666666667%;
 }
 
-.u-pull-right {
+.float-derecha {
     float: right;
 }
 
