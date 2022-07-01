@@ -86,7 +86,7 @@ class Empresa {
      * @param string $condicion
      * @return array
     */
-    public static function listar( $condicion = '' ){
+    public function listar( $condicion = '' ){
         $arregloEmpresa = null;
         $bd = new BaseDatos();
         $consulta = "SELECT * FROM empresa";
@@ -109,12 +109,10 @@ class Empresa {
                     array_push( $arregloEmpresa, $empresa );
                 }
             } else {
-                // $this->setMensajeOperacion( $bd->getError() );
-                Empresa::setMensajeOperacion( $bd->getError() );
+                $this->setMensajeOperacion( $bd->getError() );
             }
         } else {
-            // $this->setMensajeOperacion( $bd->getError() );
-            Empresa::setMensajeOperacion( $bd->getError() );
+            $this->setMensajeOperacion( $bd->getError() );
         }
         return $arregloEmpresa;
 	}

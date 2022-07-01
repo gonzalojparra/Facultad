@@ -27,10 +27,29 @@ do {
     $selec = trim(fgets(STDIN));
     switch( $selec ){
         case 1:
-            $arrayEmpresas = Empresa::listar();
-            print_r($arrayEmpresas);
+            $arrayEmpresas = $objEmpresa->listar();
+            if( count($arrayEmpresas) > 0 ){
+                echo arrayString( $arrayEmpresas );
+            } else {
+                echo "No existen empresas registradas.\n";
+            }
             break;
         case 2:
+            $arrayPasajeros = $objPasajero->listar();
+            if( count($arrayPasajeros) > 0 ){
+                echo arrayString( $arrayPasajeros );
+                } else {
+                    echo "No existen pasajeros registrados.\n";
+                }
+            break;
+        case 3:
+            $arrayViajes = $objViaje->listar();
+            if( count($arrayViajes) > 0 ){
+                echo arrayString( $arrayViajes );
+            } else {
+                echo "No existen viajes registrados.\n";
+            }
+        case 4:
                 echo selecOpcion();
                 $opcion = trim(fgets(STDIN));
                 switch( $opcion ){
@@ -249,7 +268,7 @@ do {
                         break;
         }
     }
-} while ( $selec != 3 );
+} while ( $selec != 5 );
 
 /**
  * Método que muestra opciones del menú principal
@@ -261,8 +280,10 @@ function menu() {
     Por favor seleccione una opción:
     -----------------------------------\n
     1. Ver todas las empresas.\n
-    2. Modificar base de datos.\n
-    3. Salir.\n
+    2. Ver todos los pasajeros.\n
+    3. Ver todos los viajes.\n
+    4. Modificar base de datos.\n
+    5. Salir.\n
     Ingrese una opción: ";
     return $str;
 }
@@ -291,4 +312,17 @@ function selecOpcion() {
     13. Salir.\n
     Ingrese una opción: ";
     return $opcion;
+}
+
+function arrayString( $array ){
+    $str = "";
+    foreach( $array as $key => $value ){
+        $obj = $value;
+        $strObj = $obj->__toString();
+        $str.= "
+        --------------------
+        $strObj
+        --------------------\n";
+    }
+    return $str;
 }

@@ -55,6 +55,8 @@ DELETE FROM Encargado WHERE nroDoc NOT IN (SELECT nroDocEncargado FROM Libro);
 /* Ejercicio 4. Inciso a */
 SELECT nro, nroCopiaLibro, isbn, idFeria FROM Lectura WHERE fechaLectura >= '2022-06-25';
 
+SELECT nro, nroCopiaLibro, isbn, idFeria from Lectura INNER JOIN Feria ON Lectura.idFeria = Feria.id WHERE (DATEDIFF(Lectura.fechaLectura, Feria.fechaInicio) > 1); /* bien?? */
+
 
 /* Ejercicio 4. Inciso b */
 SELECT * FROM CopiaLibro WHERE NOT EXISTS (SELECT Libro.isbn FROM Libro INNER JOIN Lectura ON CopiaLibro.isbn = Lectura.isbn WHERE Libro.portada = 'Ciencia');

@@ -109,7 +109,7 @@ class Pasajero {
      * @param string $condicion
      * @return array
     */
-    public static function listar( $condicion = '' ){
+    public function listar( $condicion = '' ){
         $arregloPasajeros = null;
         $bd = new BaseDatos();
         $consulta = "SELECT * FROM pasajero";
@@ -126,20 +126,24 @@ class Pasajero {
                     $pnombre = $row2['pnombre'];
                     $papellido = $row2['papellido'];
                     $ptelefono = $row2['ptelefono'];
-                    $idviaje = $row2['idviaje'];
 
+                    $idviaje = $row2['idviaje'];
+                    $objviaje = new Viaje();
+                    if( $objviaje->buscar($idviaje) ){
+                        $viaje = $objviaje;
+                    } else {
+                        $viaje = '';
+                    }
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
                     $pasajero = new Pasajero();
-                    $pasajero->cargar( $rdocumento, $pnombre, $papellido, $ptelefono, $idviaje );
+                    $pasajero->cargar( $rdocumento, $pnombre, $papellido, $ptelefono, $viaje );
                     array_push( $arregloPasajeros, $pasajero );
                 }
             } else {
-                // $this->setMensajeOperacion( $bd->getError() );
-                Pasajero::setMensajeOperacion( $bd->getError() );
+                $this->setMensajeOperacion( $bd->getError() );
             }
         } else {
-            // $this->setMensajeOperacion( $bd->getError() );
-            Pasajero::setMensajeOperacion( $bd->getError() );
+            $this->setMensajeOperacion( $bd->getError() );
         }
         return $arregloPasajeros;
 	}
@@ -196,13 +200,12 @@ class Pasajero {
 
     // toString
     public function __toString() {
-        $idViaje = $this->getObjviaje()->getIdviaje();
         $str = "
         DNI: {$this->getRdocumento()}.\n
         Nombre: {$this->getPnombre()}.\n
         Apellido: {$this->getPapellido()}.\n
         Telefono: {$this->getPtelefono()}.\n
-        ID Viaje: $idViaje.\n";
+        ID Viaje: {$this->getObjviaje()->getIdviaje()}.\n";
         return $str;
     }
     

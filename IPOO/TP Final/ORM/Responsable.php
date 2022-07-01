@@ -2,10 +2,10 @@
 
 class Responsable {
     // Atributos
-    private $numEmpleado; // int, key
-    private $numLicencia; // int
-    private $nombre; // string
-    private $apellido; // string
+    private $numEmpleado;
+    private $numLicencia;
+    private $nombre;
+    private $apellido;
     private $mensajeOperacion;
 
     // Constructor
@@ -97,7 +97,7 @@ class Responsable {
      * @param string $condicion
      * @return array
     */
-    public static function listar( $condicion = '' ){
+    public function listar( $condicion = '' ){
         $arregloResponsable = null;
         $bd = new BaseDatos();
         $consulta = "SELECT * FROM responsable";
@@ -121,12 +121,10 @@ class Responsable {
                     array_push( $arregloResponsable, $responsable );
                 }
             } else {
-                // $this->setMensajeOperacion( $bd->getError() );
-                Responsable::setMensajeOperacion( $bd->getError() );
+                $this->setMensajeOperacion( $bd->getError() );
             }
         } else {
-            // $this->setMensajeOperacion( $bd->getError() );
-            Responsable::setMensajeOperacion( $bd->getError() );
+            $this->setMensajeOperacion( $bd->getError() );
         }
         return $arregloResponsable;
     }
