@@ -49,6 +49,7 @@ do {
             } else {
                 echo "No existen viajes registrados.\n";
             }
+            break;
         case 4:
                 echo selecOpcion();
                 $opcion = trim(fgets(STDIN));
@@ -113,7 +114,7 @@ do {
                     case 5:
                         echo "Ingrese el numero de empleado a modificar: ";
                         $numEmpleado = trim(fgets(STDIN));
-                        if( $objResponsable->buscar( $numEmpleado) ){
+                        if( $objResponsable->buscar($numEmpleado) ){
                             echo "Ingrese numero de licencia: ";
                             $numLicencia = trim(fgets(STDIN));
                             echo "Ingrese nombre: ";
@@ -320,7 +321,6 @@ function arrayString( $array ){
         $obj = $value;
         $strObj = $obj->__toString();
         $str.= "
-        --------------------
         $strObj
         --------------------\n";
     }

@@ -126,17 +126,12 @@ class Viaje {
                     $this->setCantmaxpasajeros( $row2['vcantmaxpasajeros'] );
 
                     $objEmpresa = new Empresa();
-                    if( $objEmpresa->buscar($row2['idempresa']) ){
-                        $this->setIdobjempresa( $objEmpresa );
-                    } else {
-                        $this->setIdobjempresa( '' );
-                    }
+                    $objEmpresa->buscar($row2['idempresa']);
+                    $this->setIdobjempresa( $objEmpresa );
+
                     $objResponsable = new Responsable();
-                    if( $objResponsable->buscar($row2['rnumeroempleado']) ){
-                        $this->setObjresponsable( $objResponsable );
-                    } else {
-                        $this->setObjresponsable( '' );
-                    }
+                    $objResponsable->buscar($row2['rnumeroempleado']);
+                    $this->setObjresponsable( $objResponsable );
 
                     $this->setVimporte( $row2['vimporte'] );
                     $this->setTipoasiento( $row2['tipoAsiento'] );
@@ -263,8 +258,8 @@ class Viaje {
         ID: {$this->getIdviaje()}.\n
         Destino: {$this->getVdestino()}.\n
         Cantidad máxima de pasajeros: {$this->getCantmaxpasajeros()}.\n
-        Empresa: {$this->getIdobjempresa()}.\n
-        Responsable: {$this->getObjresponsable()}.\n
+        Empresa: {$this->getIdobjempresa()->getIdempresa()}.\n
+        Responsable: {$this->getObjresponsable()->getNumEmpleado()}.\n
         Importe: {$this->getVimporte()} pesos.\n
         Tipo de asiento: {$this->getTipoasiento()}.\n
         Ida y Vuelta: {$this->getIdayvuelta()}.\n";

@@ -70,7 +70,7 @@ class Responsable {
      */
     public function buscar( $numEmpleado ){
         $bd = new BaseDatos();
-        $consulta = "SELECT * FROM responsable WHERE rnumempleado = " .$numEmpleado;
+        $consulta = "SELECT * FROM responsable WHERE rnumeroempleado = {$numEmpleado}";
         $bandera = false;
 
         if( $bd->Iniciar() ){
