@@ -160,10 +160,10 @@ class Empresa {
      * @param void
      * @return boolean
      */
-    public function eliminar( $id ){
+    public function eliminar(){
 		$bd = new BaseDatos();
 		$bandera = false;
-        $consulta = "DELETE FROM empresa WHERE idempresa = $id";
+        $consulta = "DELETE FROM empresa WHERE idempresa = {$this->getIdempresa()}";
 		if( $bd->Iniciar() ){
 			if( $bd->Ejecutar($consulta) ){
 			    $bandera = true;

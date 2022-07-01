@@ -35,6 +35,14 @@ do {
             }
             break;
         case 2:
+            $arrayResponsables = $objResponsable->listar();
+            if( count($arrayResponsables) > 0 ){
+                echo arrayString( $arrayResponsables );
+            } else {
+                echo "No existen responsables registrados.\n";
+            }
+            break;
+        case 3:
             $arrayPasajeros = $objPasajero->listar();
             if( count($arrayPasajeros) > 0 ){
                 echo arrayString( $arrayPasajeros );
@@ -42,7 +50,7 @@ do {
                     echo "No existen pasajeros registrados.\n";
                 }
             break;
-        case 3:
+        case 4:
             $arrayViajes = $objViaje->listar();
             if( count($arrayViajes) > 0 ){
                 echo arrayString( $arrayViajes );
@@ -50,21 +58,25 @@ do {
                 echo "No existen viajes registrados.\n";
             }
             break;
-        case 4:
+        case 5:
                 echo selecOpcion();
                 $opcion = trim(fgets(STDIN));
                 switch( $opcion ){
                     case 1:
                         echo "Ingrese nombre de empresa: \n";
                         $nombre = trim(fgets(STDIN));
-                        echo "Ingrese dirección de empresa: \n";
-                        $direcc = trim(fgets(STDIN));
-                        $objEmpresa->cargar(0, $nombre, $direcc);
-                        if( $objEmpresa->insertar() ){
-                            echo "Se insertó la empresa.\n";
+                        if( $nombre !== '' ){
+                            echo "Ingrese dirección de empresa: \n";
+                            $direcc = trim(fgets(STDIN));
+                            $objEmpresa->cargar(0, $nombre, $direcc);
+                            if( $objEmpresa->insertar() ){
+                                echo "Se insertó la empresa.\n";
+                            } else {
+                                echo "No se insertó la empresa.\n";
+                                echo $objEmpresa->getMensajeOperacion();
+                            }
                         } else {
-                            echo "No se insertó la empresa.\n";
-                            echo $objEmpresa->getMensajeOperacion();
+                            echo "Por favor ingrese un nombre válido.\n";
                         }
                         break;
                     case 2:
@@ -89,11 +101,15 @@ do {
                     case 3:
                         echo "Ingrese el ID de la empresa a eliminar: ";
                         $id = trim(fgets(STDIN));
-                        if( $objEmpresa->eliminar( $id ) ){
-                            echo "Se borró la empresa.\n";
+                        if( $objEmpresa->buscar($id) ){
+                            if( $objEmpresa->eliminar() ){
+                                echo "Se borró la empresa.\n";
+                            } else {
+                                echo "No se borró la empresa.\n";
+                                echo $objEmpresa->getMensajeOperacion();
+                            }
                         } else {
-                            echo "No se borró la empresa.\n";
-                            echo $objEmpresa->getMensajeOperacion();
+                            echo "La empresa con el ID $id no existe.\n";
                         }
                         break;
                     case 4:
@@ -135,11 +151,15 @@ do {
                     case 6:
                         echo "Ingrese el numero de empleado a eliminar: ";
                         $numEmpleado = trim(fgets(STDIN));
-                        if( $objResponsable->eliminar( $numEmpleado ) ){
-                            echo "Se borró el responsable.\n";
+                        if( $objResponsable->buscar($numEmpleado) ){
+                            if( $objResponsable->eliminar() ){
+                                echo "Se borró el responsable.\n";
+                            } else {
+                                echo "No se borró el responsable.\n";
+                                echo $objEmpresa->getMensajeOperacion();
+                            }
                         } else {
-                            echo "No se borró el responsable.\n";
-                            echo $objEmpresa->getMensajeOperacion();
+                            echo "El responsable con el número $numEmpleado no existe.\n";
                         }
                         break;
                     case 7:
@@ -149,17 +169,24 @@ do {
                         if( count($arrayDestinos) === 0 ){
                             echo "Ingrese cantidad máxima de pasajeros: ";
                             $cantMaxPsj = trim(fgets(STDIN));
+
                             echo "Ingrese el ID de la empresa a cargo: ";
                             $idEmpresa = trim(fgets(STDIN));
+                            $objEmpresa = new Empresa();
+                            $objEmpresa->buscar($idEmpresa);
+        
                             echo "Ingrese el numero de empleado del responsable a cargo: ";
                             $numEmpleadoRsp = trim(fgets(STDIN));
+                            $objResponsable = new Responsable();
+                            $objResponsable->buscar($numEmpleadoRsp);
+
                             echo "Ingrese el importe: ";
                             $importe = trim(fgets(STDIN));
                             echo "Ingrese tipo de asiento (Semi-cama o Cama): ";
                             $asiento = trim(fgets(STDIN));
                             echo "Ingrese si el viaje es de Ida y vuelta (Si o No): ";
                             $idavuelta = trim(fgets(STDIN));
-                            $objViaje->cargar(0, $destino, $cantMaxPsj, $idEmpresa, $numEmpleadoRsp, $importe, $asiento, $idavuelta);
+                            $objViaje->cargar(0, $destino, $cantMaxPsj, $objEmpresa, $objResponsable, $importe, $asiento, $idavuelta);
                             // echo $objViaje->__toString();
                             if( $objViaje->insertar() ){
                                 echo "Se insertó el viaje.\n";
@@ -170,7 +197,6 @@ do {
                         } else {
                             echo "El viaje con el destino a $destino ya existe.\n";
                         }
-                        
                         break;
                     case 8:
                         echo "Ingrese el ID del viaje a modificar: ";
@@ -180,17 +206,24 @@ do {
                             $destino = trim(fgets(STDIN));
                             echo "Ingrese nueva cantidad máxima de pasajeros: ";
                             $cantMaxPsj = trim(fgets(STDIN));
+
                             echo "Ingrese el ID de la empresa a cargo: ";
                             $idEmpresa = trim(fgets(STDIN));
+                            $objEmpresa = new Empresa();
+                            $objEmpresa->buscar($idEmpresa);
+
                             echo "Ingrese el numero de empleado del responsable a cargo: ";
                             $numEmpleadoRsp = trim(fgets(STDIN));
+                            $objResponsable = new Responsable();
+                            $objResponsable->buscar($numEmpleadoRsp);
+
                             echo "Ingrese nuevo importe: ";
                             $importe = trim(fgets(STDIN));
                             echo "Ingrese tipo de asiento (Semi-cama o Cama): ";
                             $asiento = trim(fgets(STDIN));
                             echo "Ingrese si el viaje es de Ida y vuelta (Si o No): ";
                             $idavuelta = trim(fgets(STDIN));
-                            $objViaje->cargar($id, $destino, $cantMaxPsj, $idEmpresa, $numEmpleadoRsp, $importe, $asiento, $idavuelta);
+                            $objViaje->cargar($id, $destino, $cantMaxPsj, $objEmpresa, $objResponsable, $importe, $asiento, $idavuelta);
                             if( $objViaje->modificar() ){
                                 echo "Se modificó el viaje.\n";
                             } else {
@@ -218,20 +251,28 @@ do {
                     case 10:
                         echo "Ingrese el documento del pasajero: ";
                         $documento = trim(fgets(STDIN));
-                        echo "Ingrese el nombre: ";
-                        $nombre = trim(fgets(STDIN));
-                        echo "Ingrese el apellido: ";
-                        $apellido = trim(fgets(STDIN));
-                        echo "Telefono: ";
-                        $telefono = trim(fgets(STDIN));
-                        echo "Ingrese el ID del viaje: ";
-                        $idviaje = trim(fgets(STDIN));
-                        $objPasajero->cargar( $documento, $nombre, $apellido, $telefono, $idviaje );
-                        if( $objPasajero->insertar() ){
-                            echo "Se insertó el pasajero.\n";
+                        if( $objPasajero->buscar($documento) ){
+                            echo "El pasajero con el DNI $documento ya existe.\n";
                         } else {
-                            echo "No se insertó el pasajero.\n";
-                            echo $objPasajero->getMensajeOperacion();
+                            echo "Ingrese el nombre: ";
+                            $nombre = trim(fgets(STDIN));
+                            echo "Ingrese el apellido: ";
+                            $apellido = trim(fgets(STDIN));
+                            echo "Telefono: ";
+                            $telefono = trim(fgets(STDIN));
+
+                            echo "Ingrese el ID del viaje: ";
+                            $idviaje = trim(fgets(STDIN));
+                            $objViaje = new Viaje();
+                            $objViaje->buscar($idviaje);
+
+                            $objPasajero->cargar( $documento, $nombre, $apellido, $telefono, $objViaje );
+                            if( $objPasajero->insertar() ){
+                                echo "Se insertó el pasajero.\n";
+                            } else {
+                                echo "No se insertó el pasajero.\n";
+                                echo $objPasajero->getMensajeOperacion();
+                            }
                         }
                         break;
                     case 11:
@@ -244,9 +285,13 @@ do {
                             $apellido = trim(fgets(STDIN));
                             echo "Telefono: ";
                             $telefono = trim(fgets(STDIN));
+
                             echo "Ingrese el ID del viaje: ";
                             $idviaje = trim(fgets(STDIN));
-                            $objPasajero->cargar( $documento, $nombre, $apellido, $telefono, $idviaje );
+                            $objViaje = new Viaje();
+                            $objViaje->buscar($idviaje);
+
+                            $objPasajero->cargar( $documento, $nombre, $apellido, $telefono, $objViaje );
                             if( $objPasajero->modificar() ){
                                 echo "Se modificó el pasajero.\n";
                             } else {
@@ -260,16 +305,20 @@ do {
                     case 12:
                         echo "Ingrese el documento del pasajero a eliminar: ";
                         $documento = trim(fgets(STDIN));
-                        if( $objPasajero->eliminar( $documento ) ){
-                            echo "Se borró el pasajero.\n";
+                        if( $objPasajero->buscar($documento) ) {
+                            if( $objPasajero->eliminar() ){
+                                echo "Se borró el pasajero.\n";
+                            } else {
+                                echo "No se borró el pasajero.\n";
+                                echo $objPasajero->getMensajeOperacion();
+                            }
                         } else {
-                            echo "No se borró el pasajero.\n";
-                            echo $objPasajero->getMensajeOperacion();
+                            echo "El pasajero con el documento $documento no existe.\n";
                         }
                         break;
         }
     }
-} while ( $selec != 5 );
+} while ( $selec != 6 );
 
 /**
  * Método que muestra opciones del menú principal
@@ -281,10 +330,11 @@ function menu() {
     Por favor seleccione una opción:
     -----------------------------------\n
     1. Ver todas las empresas.\n
-    2. Ver todos los pasajeros.\n
-    3. Ver todos los viajes.\n
-    4. Modificar base de datos.\n
-    5. Salir.\n
+    2. Ver todos los responsables.\n
+    3. Ver todos los pasajeros.\n
+    4. Ver todos los viajes.\n
+    5. Modificar base de datos.\n
+    6. Salir.\n
     Ingrese una opción: ";
     return $str;
 }
@@ -315,6 +365,9 @@ function selecOpcion() {
     return $opcion;
 }
 
+/**
+ * Método que convierte arrays u objetos en cadenas de texto
+ */
 function arrayString( $array ){
     $str = "";
     foreach( $array as $key => $value ){

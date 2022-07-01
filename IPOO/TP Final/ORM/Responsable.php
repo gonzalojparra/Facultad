@@ -163,9 +163,9 @@ class Responsable {
         return $bandera;
     }
 
-    public function eliminar( $numEmpleado ){
+    public function eliminar(){
         $bd = new BaseDatos();
-        $consulta = "DELETE FROM responsable WHERE rnumeroempleado = $numEmpleado";
+        $consulta = "DELETE FROM responsable WHERE rnumeroempleado = {$this->getNumEmpleado()}";
         $bandera = false;
         if( $bd->Iniciar() ){
             if( $bd->Ejecutar($consulta) ){

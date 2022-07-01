@@ -1,4 +1,7 @@
 <?php
+require_once('Empresa.php');
+require_once('Responsable.php');
+
 
 class Viaje {
     // Atributos
@@ -172,25 +175,19 @@ class Viaje {
 
                     $objempresa = new Empresa();
                     $idempresa = $row2['idempresa'];
-                    if( $objempresa->buscar($idempresa) ){
-                        $objEmpresaId = $objempresa;
-                    } else {
-                        $objEmpresaId = '';
-                    }
+                    $objempresa->buscar($idempresa);
+                    $objEmpresa = $objempresa;
                     $objresponsable = new Responsable();
                     $numeroempleado = $row2['rnumeroempleado'];
-                    if( $objresponsable->buscar($numeroempleado) ){
-                        $objResponsableNum = $objresponsable;
-                    } else {
-                        $objResponsableNum = '';
-                    }
+                    $objresponsable->buscar($numeroempleado);
+                    $objResponsable = $objresponsable;
 
                     $importe = $row2['vimporte'];
                     $tipoasiento = $row2['tipoAsiento'];
                     $idavuelta = $row2['idayvuelta'];
                     // Creo instancia donde se almacenarán los datos, para luego pushearlos en el array
                     $viaje = new Viaje();
-                    $viaje->cargar( $idviaje, $destino, $cantmaxpasajeros, $objEmpresaId, $objResponsableNum, $importe, $tipoasiento, $idavuelta );
+                    $viaje->cargar( $idviaje, $destino, $cantmaxpasajeros, $objEmpresa, $objResponsable, $importe, $tipoasiento, $idavuelta );
                     array_push( $arregloViaje, $viaje );
                 }
             } else {
@@ -204,7 +201,14 @@ class Viaje {
 
     public function insertar() {
         $bd = new BaseDatos();
-        $consulta = "INSERT INTO viaje VALUES ({$this->getIdviaje()}, '{$this->getVdestino()}', {$this->getCantmaxpasajeros()}, {$this->getIdobjempresa()}, {$this->getObjresponsable()}, {$this->getVimporte()}, '{$this->getTipoasiento()}', '{$this->getIdayvuelta()}')";
+
+        $objEmpresa = $this->getIdobjempresa();
+        $idEmpresa = $objEmpresa->getIdempresa();
+
+        $objResponsable = $this->getObjresponsable();
+        $numEmpleado = $objResponsable->getNumEmpleado();
+        
+        $consulta = "INSERT INTO viaje VALUES ({$this->getIdviaje()}, '{$this->getVdestino()}', {$this->getCantmaxpasajeros()}, $idEmpresa, $numEmpleado, {$this->getVimporte()}, '{$this->getTipoasiento()}', '{$this->getIdayvuelta()}')";
         
         $bandera = false;
         if( $bd->Iniciar() ){
@@ -221,7 +225,14 @@ class Viaje {
 
     public function modificar() {
         $bd = new BaseDatos();
-        $consulta = "UPDATE viaje SET idviaje = {$this->getIdviaje()}, vdestino = '{$this->getVdestino()}', vcantmaxpasajeros = {$this->getCantmaxpasajeros()}, idempresa = {$this->getIdobjempresa()}, rnumeroempleado = {$this->getObjresponsable()}, vimporte = {$this->getVimporte()}, tipoAsiento = '{$this->getTipoasiento()}', idayvuelta = '{$this->getIdayvuelta()}' WHERE idviaje = {$this->getIdviaje()}";
+
+        $objEmpresa = $this->getIdobjempresa();
+        $idEmpresa = $objEmpresa->getIdempresa();
+
+        $objResponsable = $this->getObjresponsable();
+        $numEmpleado = $objResponsable->getNumEmpleado();
+
+        $consulta = "UPDATE viaje SET idviaje = {$this->getIdviaje()}, vdestino = '{$this->getVdestino()}', vcantmaxpasajeros = {$this->getCantmaxpasajeros()}, idempresa = $idEmpresa, rnumeroempleado = $numEmpleado, vimporte = {$this->getVimporte()}, tipoAsiento = '{$this->getTipoasiento()}', idayvuelta = '{$this->getIdayvuelta()}' WHERE idviaje = {$this->getIdviaje()}";
         $bandera = false;
 
         if( $bd->Iniciar() ){
@@ -258,8 +269,8 @@ class Viaje {
         ID: {$this->getIdviaje()}.\n
         Destino: {$this->getVdestino()}.\n
         Cantidad máxima de pasajeros: {$this->getCantmaxpasajeros()}.\n
-        Empresa: {$this->getIdobjempresa()->getIdempresa()}.\n
-        Responsable: {$this->getObjresponsable()->getNumEmpleado()}.\n
+        ID Empresa: {$this->getIdobjempresa()->getIdempresa()}.\n
+        Responsable: Empleado N° {$this->getObjresponsable()->getNumEmpleado()}.\n
         Importe: {$this->getVimporte()} pesos.\n
         Tipo de asiento: {$this->getTipoasiento()}.\n
         Ida y Vuelta: {$this->getIdayvuelta()}.\n";

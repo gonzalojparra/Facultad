@@ -1,4 +1,6 @@
 <?php
+require_once('Viaje.php');
+
 
 class Pasajero {
     // Atributos
@@ -150,7 +152,7 @@ class Pasajero {
 
     public function insertar() {
         $bd = new BaseDatos();
-        $consulta = "INSERT INTO pasajero VALUES ('{$this->getRdocumento()}', '{$this->getPnombre()}', '{$this->getPapellido()}', {$this->getPtelefono()}, {$this->getObjviaje()})";
+        $consulta = "INSERT INTO pasajero VALUES ('{$this->getRdocumento()}', '{$this->getPnombre()}', '{$this->getPapellido()}', {$this->getPtelefono()}, {$this->getObjviaje()->getIdviaje()})";
         $bandera = false;
 
         if( $bd->Iniciar() ){
@@ -167,7 +169,7 @@ class Pasajero {
 
     public function modificar() {
         $bd = new BaseDatos();
-        $consulta = "UPDATE pasajero SET rdocumento = '{$this->getRdocumento()}', pnombre = '{$this->getPnombre()}', papellido = '{$this->getPapellido()}', ptelefono = {$this->getPtelefono()}, idviaje = {$this->getObjViaje()}";
+        $consulta = "UPDATE pasajero SET rdocumento = '{$this->getRdocumento()}', pnombre = '{$this->getPnombre()}', papellido = '{$this->getPapellido()}', ptelefono = {$this->getPtelefono()}, idviaje = {$this->getObjViaje()->getIdviaje()}";
         $bandera = false;
 
         if( $bd->Iniciar() ){
@@ -182,9 +184,9 @@ class Pasajero {
         return $bandera;
     }
 
-    public function eliminar( $rdocumento ){
+    public function eliminar(){
         $bd = new BaseDatos();
-        $consulta = "DELETE FROM pasajero WHERE rdocumento = $rdocumento";
+        $consulta = "DELETE FROM pasajero WHERE rdocumento = {$this->getRdocumento()}";
         $bandera = false;
         if( $bd->Iniciar() ){
             if( $bd->Ejecutar($consulta) ){
