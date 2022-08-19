@@ -1,0 +1,7 @@
+<?php
+
+$user = [
+    'usuario' => '',
+    'clave' => ''
+];
+
