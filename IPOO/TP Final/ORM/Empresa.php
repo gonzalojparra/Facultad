@@ -115,7 +115,7 @@ class Empresa {
             $this->setMensajeOperacion( $bd->getError() );
         }
         return $arregloEmpresa;
-	}
+    }
 
     public function insertar() {
         $bd = new BaseDatos();
