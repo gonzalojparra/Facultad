@@ -161,20 +161,20 @@ class Empresa {
      * @return boolean
      */
     public function eliminar(){
-		$bd = new BaseDatos();
-		$bandera = false;
+	$bd = new BaseDatos();
+	$bandera = false;
         $consulta = "DELETE FROM empresa WHERE idempresa = {$this->getIdempresa()}";
-		if( $bd->Iniciar() ){
-			if( $bd->Ejecutar($consulta) ){
-			    $bandera = true;
-			} else {
-				$this->setmensajeoperacion( $bd->getError() );
-			}
+	if( $bd->Iniciar() ){
+		if( $bd->Ejecutar($consulta) ){
+			$bandera = true;
 		} else {
-            $this->setmensajeoperacion( $bd->getError() );
+			$this->setmensajeoperacion( $bd->getError() );
 		}
-		return $bandera; 
+	} else {
+		$this->setmensajeoperacion( $bd->getError() );
 	}
+	return $bandera; 
+    }
 
     // toString
     public function __toString(){
