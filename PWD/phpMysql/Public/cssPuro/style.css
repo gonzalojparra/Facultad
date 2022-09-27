@@ -1,0 +1,98 @@
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+/* errores/index style */
+
+.containerError {
+    border: 1px solid #ddd;
+    background-color: #F8F1F1;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+
+/* templates/header style */
+
+#nav {
+    background-color: #563d7c;
+    height: 70px;
+    text-align: center;
+    
+   
+    
+}
+
+#nav li a {
+    color: white;
+    font-family: 'Bungee Shade', cursive;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: 30px;
+    
+    
+}
+
+
+/* Main/index style */
+
+#resumen {
+    padding: 10px;
+    margin: 10px;
+}
+
+
+/* personas/index  style*/
+
+.containerPersonas {
+    margin: 10px;
+    padding: 10px;
+}
+
+#btnViewPeople {
+    background-color: #563d7c;
+    color: white;
+    border-radius: 5px;
+    border: #563d7c;
+}
+
+.bad {
+    border: red 3px solid;
+}
+
+.gut {
+    border: green 3px solid;
+}
+
+.bienvenida{
+    font-family: 'Bungee Shade', cursive;
+    color:#563d7c;
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.grupo, .grupo1{
+    font-family: 'Bungee Shade', cursive;
+    font-size: 30px;
+}
+.grupo1{
+    font-size: 40px;
+}
+
+
+/*
+.cuadro{
+    background-color: #563d7c;
+    width: 600px;
+    text-align: center;
+    color: #ddd;
+    
+}
+.hijo{
+    align-self: center;
+}
+*/
+
+/*  */
