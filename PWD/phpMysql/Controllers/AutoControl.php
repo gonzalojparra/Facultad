@@ -54,7 +54,7 @@ class AutoControl extends Controller {
         $resp = null;
         if( $autoPatente == null ){
             if( $modeloPersona->buscarPorDni($datos['inputDniDuenio']) ){
-                $modeloAuto->setear( $datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio'] );
+                $modeloAuto->cargar( $datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio'] );
                 if( $modeloAuto->insertar() ){
                     $resp = true;
                 }
@@ -85,7 +85,7 @@ class AutoControl extends Controller {
             array_key_exists('Modelo', $param) &&
             array_key_exists('objPersona', $param) ){
                 $auto = new Auto();
-                $auto->insertar(
+                $auto->cargar(
                     $param['Patente'],
                     $param['Marca'],
                     $param['Modelo'],
@@ -104,7 +104,7 @@ class AutoControl extends Controller {
         $obj = null;
         if (isset($param['inputId'])) {
             $obj = new Auto();
-            $obj->setear($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
+            $obj->cargar($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
         }
         return $obj;
     }
@@ -119,8 +119,10 @@ class AutoControl extends Controller {
         //$param['inputDni'] = null;
         $elObjAuto = $this->cargarObjeto($param);
 
-        if ($elObjAuto != null and $elObjAuto->insertar()) {
-            $resp = true;
+        if ($elObjAuto != null) {
+            if( $elObjAuto->insertar() ){
+                $resp = true;
+            }
         }
         return $resp;
     }

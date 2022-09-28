@@ -2,7 +2,12 @@
     require_once('../../config.php');
     $data = data_submitted();
     $objAuto = new AutoControl();
-    $autosData = $objAuto->buscar( $data );
+    if( count($data) > 0 ){
+        $objAuto->insertar( $data );
+        $enviado = $data;
+    } else {
+        $enviado = null;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@
             <h2>Agregar un auto</h2>
             <div class="mb-3">
                 <?php
-                if( isset($autosData) ){
+                if( $enviado !== null ){
                 ?>
                 <table class="table table-striped">
                     <tr>
@@ -35,10 +40,10 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td><?php echo $autosData[0]->getMarca(); ?></td>
-                        <td><?php echo $autosData[0]->getModelo(); ?></td>
-                        <td><?php echo $autosData[0]->getPatente(); ?></td>
-                        <td><?php echo $autosData[0]->getObjPersona()->getNroDni(); ?></td>
+                        <td><?php echo $enviado['inputMarca']; ?></td>
+                        <td><?php echo $enviado['inputModelo']; ?></td>
+                        <td><?php echo $enviado['inputPatente']; ?></td>
+                        <td><?php echo $enviado['inputDniDuenio']; ?></td>
                     </tr>
                 </table>
                 <?php

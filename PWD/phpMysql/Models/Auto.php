@@ -61,15 +61,15 @@ class Auto {
     public function cargar($patente, $marca, $modelo, $documento){
         $objPersona = new Persona();
         
-        $resp = false;
+        $bandera = false;
         if( $objPersona->buscar($documento) ){
             $this->setPatente( $patente );
             $this->setMarca( $marca );
             $this->setModelo( $modelo );
             $this->setObjPersona( $objPersona );   
-            $resp = true;
+            $bandera = true;
         }
-        return $resp;
+        return $bandera;
     }
 
     /* public function cargar() {
