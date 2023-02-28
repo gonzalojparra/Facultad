@@ -11,7 +11,7 @@ trait Mailer {
             $mail = new PHPMailer\PHPMailer\PHPMailer();
             $mail->isSMTP();                                             // Envío usando SMTP
             
-            $mail->SMTPDebug = 0;                                        // Activa salida del debugger detallada
+            $mail->SMTPDebug = 0;                                        // Desactivo salida detallada del debugger
             $mail->SMTPAuth   = true;                                    // Activa autenticación SMTP
             $mail->Host       = 'smtp.gmail.com';                        // Setea el servidor SMTP para envíos
             $mail->Username   = 'gonzalo.marin@est.fi.uncoma.edu.ar';    // SMTP mail
