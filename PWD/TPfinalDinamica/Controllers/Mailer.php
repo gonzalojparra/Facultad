@@ -15,7 +15,7 @@ trait Mailer {
             $mail->SMTPAuth   = true;                                    // Activa autenticación SMTP
             $mail->Host       = 'smtp.gmail.com';                        // Setea el servidor SMTP para envíos
             $mail->Username   = 'gonzalo.marin@est.fi.uncoma.edu.ar';    // SMTP mail
-            $mail->Password   = '44238101';                              // SMTP contraseña
+            $mail->Password   = '********';                              // SMTP contraseña
             $mail->SMTPSecure = 'ssl';                                   // Activa encriptación TLS implícita
             $mail->Port       = 465;      
             
