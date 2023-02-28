@@ -6,10 +6,10 @@ class CompraestadoController extends MasterController {
     //crea array para la busqueda
     public function busqueda(){
         $arrayBusqueda = [];
-        $idcompraestado = $this->buscarKey('idcompraestado');
-        $idcompra = $this->buscarKey('idcompra');
-        $idcompraestadotipo = $this->buscarKey('idcompraestadotipo');
-        $cefechaini = $this->buscarKey('cefechaini');
+        $idcompraestado = Data::buscarKey('idcompraestado');
+        $idcompra = Data::buscarKey('idcompra');
+        $idcompraestadotipo = Data::buscarKey('idcompraestadotipo');
+        $cefechaini = Data::buscarKey('cefechaini');
         $arrayBusqueda = ['idcompraestado' => $idcompraestado,
                           'idcompra' => $idcompra,
                           'idcompraestadotipo' => $idcompraestadotipo,
@@ -37,7 +37,7 @@ class CompraestadoController extends MasterController {
         $respuesta['obj'] = null;
         $respuesta['error'] = '';
         $arrayBusqueda = [];
-        $arrayBusqueda['idcompraestado'] = $this->buscarKey('idcompraestado');
+        $arrayBusqueda['idcompraestado'] = Data::buscarKey('idcompraestado');
         $objCompraestado = new Compraestado();
         $rta = $objCompraestado->buscar($arrayBusqueda);
         //var_dump($objCompraestado);
@@ -198,12 +198,12 @@ class CompraestadoController extends MasterController {
         $array = [];
         $objCompraestado = new Compraestado();
         //tengo objeto compra
-        $array ['idcompra'] = $this->buscarKey('idcompra');
+        $array ['idcompra'] = Data::buscarKey('idcompra');
         $objCompra = new Compra();
         $objCompra->buscar($array);
         //tengo objeto compraestadotipo
         $arrayBusquedasT = [];
-        $arrayBusquedasT ['idcompraestadotipo'] = $this->buscarKey('idcompraestadotipo');
+        $arrayBusquedasT ['idcompraestadotipo'] = Data::buscarKey('idcompraestadotipo');
         $objCompraestadotipo = new Compraestadotipo();
         $objCompraestadotipo->buscar($arrayBusquedasT);
         //cargo el nuevo compraestado con el estadotipo nuevo
@@ -223,7 +223,7 @@ class CompraestadoController extends MasterController {
     //tengo que traer la compra, el compraitem y producto
     public function cambiarStocksegunEstado($objCompraestado){
         //buscar el valor de la key enviada cmo compraestadotipo
-        $data = $this->buscarKey('idcompraestadotipo');
+        $data = Data::buscarKey('idcompraestadotipo');
         //obtengo el obj compra que tiene el objeto
         $objCompra = $objCompraestado->getObjCompra();
         //obtengo el obj estadotipo que tiene sin el cambio

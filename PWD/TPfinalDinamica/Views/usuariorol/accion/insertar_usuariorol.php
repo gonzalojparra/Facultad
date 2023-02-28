@@ -2,7 +2,7 @@
 require_once('../../../config.php');
 
 $objUsuarioRol = new UsuarioRolController();
-$data = $objUsuarioRol->buscarKey( 'nombre' );
+$data = Data::buscarKey( 'nombre' );
 
 $respuesta = false;
 if( $data != null ){

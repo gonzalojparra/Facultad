@@ -19,18 +19,18 @@ class MenuController extends MasterController {
     }
 
     public function listar_menu_padre(){
-        $idmenu = $this->buscarKey('idmenu');
+        $idmenu = Data::buscarKey('idmenu');
         $array = Menu::darMenuesSinMenu($idmenu);
         return $array;
     }
 
     public function busqueda(){
         $arrayBusqueda = [];
-        $idmenu = $this->buscarKey('idmenu');
-        $menombre = $this->buscarKey('menombre');
-        $medescripcion = $this->buscarKey('medescripcion');
-        $idpadre = $this->buscarKey('idpadre');
-        $medeshabilitado = $this->buscarKey('medeshabilitado');
+        $idmenu = Data::buscarKey('idmenu');
+        $menombre = Data::buscarKey('menombre');
+        $medescripcion = Data::buscarKey('medescripcion');
+        $idpadre = Data::buscarKey('idpadre');
+        $medeshabilitado = Data::buscarKey('medeshabilitado');
         $arrayBusqueda = ['idmenu' => $idmenu,
                           'menombre' => $menombre,
                           'medescripcion' => $medescripcion,
@@ -79,7 +79,7 @@ class MenuController extends MasterController {
         $respuesta['obj'] = null;
         $respuesta['error'] = '';
         $arrayBusqueda = [];
-        $arrayBusqueda['idmenu'] = $this->buscarKey('idmenu');
+        $arrayBusqueda['idmenu'] = Data::buscarKey('idmenu');
         $objMenu = new Menu();
         $rta = $objMenu->buscar($arrayBusqueda);
         if($rta['respuesta']){

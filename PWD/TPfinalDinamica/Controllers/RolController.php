@@ -5,8 +5,8 @@ class RolController extends MasterController {
 
     public function busqueda(){
         $arrayBusqueda = [];
-        $idrol = $this->buscarKey('idrol');
-        $rodescripcion = $this->buscarKey('rodescripcion');
+        $idrol = Data::buscarKey('idrol');
+        $rodescripcion = Data::buscarKey('rodescripcion');
         $arrayBusqueda = [
             'idrol' => $idrol,
             'rodescripcion' => $rodescripcion
@@ -34,7 +34,7 @@ class RolController extends MasterController {
     } */
 
     public function buscarId() {
-        $idBusqueda = $this->buscarKey( 'idrol' );
+        $idBusqueda = Data::buscarKey( 'idrol' );
         if( $idBusqueda == false ){
             // Error
             $data['error'] = $this->warning( 'No se ha encontrado dicho registro' );
@@ -64,7 +64,7 @@ class RolController extends MasterController {
         $rta = $this->buscarId();
         $rol = $rta['array'];
 
-        $roDescripcion = $this->buscarKey( 'rodescripcion' );
+        $roDescripcion = Data::buscarKey( 'rodescripcion' );
         $rol->setRodescripcion( $roDescripcion );
 
         $respuesta = $rol->modificar();

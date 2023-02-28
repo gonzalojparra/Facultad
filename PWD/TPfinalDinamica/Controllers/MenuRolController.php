@@ -21,7 +21,7 @@ class MenuRolController extends MasterController {
     }
 
     public function buscarId() {
-        $idBusqueda = $this->buscarKey( 'idmr' );
+        $idBusqueda = Data::buscarKey( 'idmr' );
         if( $idBusqueda == false ){
             // error
             $data['error'] = $this->warning( 'No se ha encontrado dicho registro' );
@@ -58,8 +58,8 @@ class MenuRolController extends MasterController {
         $rta = $this->buscarId();
         $menuRol = $rta['array'];
 
-        $objMenu = $this->buscarKey( 'objMenu' );
-        $objRol = $this->buscarKey( 'objRol' );
+        $objMenu = Data::buscarKey( 'objMenu' );
+        $objRol = Data::buscarKey( 'objRol' );
 
         $menuRol->setObjMenu( $objMenu );
         $menuRol->setObjRol( $objRol );
@@ -79,7 +79,7 @@ class MenuRolController extends MasterController {
     }
 
     public function buscarRoles(){
-        $idmenu = $this->buscarKey('idmenu');
+        $idmenu = Data::buscarKey('idmenu');
         $arrayBus['idmenu'] = $idmenu;
         $rta = Menurol::listar($arrayBus);
         if($rta['respuesta']){

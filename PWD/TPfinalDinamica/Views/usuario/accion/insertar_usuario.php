@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objUsuCon = new UsuarioController();
-$data = $objUsuCon->buscarKey('usnombre');
+$data = Data::buscarKey('usnombre');
 $respuesta = false;
 if($data != null){
     $rta = $objUsuCon->insertar();

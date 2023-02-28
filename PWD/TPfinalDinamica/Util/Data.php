@@ -2,7 +2,7 @@
 
 trait Data {
 
-    public function data(){
+    public static function data(){
         $datos = [];
         if( isset($_GET) && count($_GET) >= 0 ){
             $datosGet = [];
@@ -29,6 +29,27 @@ trait Data {
         $datos['GET'] = $datosGet;
         $datos['POST'] = $datosPost;
         return( $datos );
+    }
+
+    // Data submitted
+    public static function getDatos(){
+        $datos = Data::data();
+        return $datos;
+    }
+
+    //Funcion para buscar la key
+    public static function buscarKey( $key ){
+        $datos = Data::getDatos();
+        $post = $datos['POST'];
+        $get = $datos['GET'];
+        if( array_key_exists($key, $post) ){
+            $respuesta = $post[$key];
+        } elseif( array_key_exists($key, $get) ){
+            $respuesta = $get[$key];
+        } else {
+            $respuesta = false;
+        }
+        return $respuesta;
     }
 
 }

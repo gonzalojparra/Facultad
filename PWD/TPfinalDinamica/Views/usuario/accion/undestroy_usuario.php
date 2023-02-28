@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objUsuCon = new UsuarioController();
-$data = $objUsuCon->buscarKey('idusuario');
+$data = Data::buscarKey('idusuario');
 //var_dump($data);
 $respuesta = false;
 if($data != null){

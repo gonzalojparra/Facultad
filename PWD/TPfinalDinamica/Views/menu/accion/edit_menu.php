@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objMenuCon = new MenuController();
-$data = $objMenuCon->buscarKey('idusuario');
+$data = Data::buscarKey('idusuario');
 $respuesta = false;
 if($data != null){
     $rta = $objMenuCon->modificar();

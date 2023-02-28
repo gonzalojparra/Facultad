@@ -2,7 +2,7 @@
 require_once('../../../config.php');
 
 $objConPro = new ProductoController();
-$data = $objConPro->buscarKey('pronombre');
+$data = Data::buscarKey('pronombre');
 /* $foto = $objConPro->buscarKey('foto'); */
 
 $respuesta = false;

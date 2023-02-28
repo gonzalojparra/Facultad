@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objConCompra = new ProductoController();
-$data = $objConCompra->buscarKey('idcompra');
+$data = Data::buscarKey('idcompra');
 $respuesta = false;
 if($data != null){
     $rta = $objConCompra->insertar();

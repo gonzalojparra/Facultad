@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objRolCon = new RolController();
-$data = $objRolCon->buscarKey('rodescripcion');
+$data = Data::buscarKey('rodescripcion');
 $respuesta = false;
 if($data != null){
     $rta = $objRolCon->insertar();

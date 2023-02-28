@@ -33,11 +33,11 @@ class UsuarioController extends MasterController {
 
     public function busqueda(){
         $arrayBusqueda = [];
-        $idusuario = $this->buscarKey('idusuario');
-        $usnombre = $this->buscarKey('usnombre');
-        $uspass = $this->buscarKey('uspass');
-        $usmail = $this->buscarKey('usmail');
-        $usdeshabilitado = $this->buscarKey('usdeshabilitado');
+        $idusuario = Data::buscarKey('idusuario');
+        $usnombre = Data::buscarKey('usnombre');
+        $uspass = Data::buscarKey('uspass');
+        $usmail = Data::buscarKey('usmail');
+        $usdeshabilitado = Data::buscarKey('usdeshabilitado');
         $arrayBusqueda = ['idusuario' => $idusuario,
                           'usnombre' => $usnombre,
                           'uspass' => $uspass,
@@ -51,7 +51,7 @@ class UsuarioController extends MasterController {
         $respuesta['obj'] = null;
         $respuesta['error'] = '';
         $arrayBusqueda = [];
-        $arrayBusqueda['idusuario'] = $this->buscarKey('idusuario');
+        $arrayBusqueda['idusuario'] = Data::buscarKey('idusuario');
         $objUsuario = new Usuario();
         $rta = $objUsuario->buscar($arrayBusqueda);
         if($rta['respuesta']){
@@ -132,10 +132,10 @@ class UsuarioController extends MasterController {
         $rta = $this->buscarId();
         $usuario = $rta['array'];
 
-        $usNombre = $this->buscarKey( 'usnombre' );
-        $usPass = $this->buscarKey( 'uspass' );
-        $usMail = $this->buscarKey( 'usmail' );
-        $usDeshabilitado = $this->buscarKey( 'usdeshabilitado' );
+        $usNombre = Data::buscarKey( 'usnombre' );
+        $usPass = Data::buscarKey( 'uspass' );
+        $usMail = Data::buscarKey( 'usmail' );
+        $usDeshabilitado = Data::buscarKey( 'usdeshabilitado' );
 
         $usuario->setUsnombre( $usNombre );
         $usuario->setUspass( $usPass );
@@ -203,8 +203,8 @@ class UsuarioController extends MasterController {
     }
 
     public function buscarObjUsuario2() {
-        $usnombre = $this->buscarKey( 'usnombre' );
-        $uspass = $this->buscarKey( 'uspass' );
+        $usnombre = Data::buscarKey( 'usnombre' );
+        $uspass = Data::buscarKey( 'uspass' );
         $arrayBu = [
             'usnombre' => $usnombre,
             'uspass' => $uspass

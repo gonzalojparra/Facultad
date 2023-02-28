@@ -1,13 +1,13 @@
 <?php
 require_once('../../../config.php');
 $objCompraitemCon = new CompraitemController();
-$data = $objCompraitemCon->buscarKey('idcompraitem');
+$data = Data::buscarKey('idcompraitem');
 $respuesta = false;
 if ($data != null) {
     //FUNCION EN CONTROLADOR PAR AQUE TRAIGA LA CANTIDAD DE PRODUCTO
     //FUNCION PARA COMPRAR 
     $cantTotal = $objCompraitemCon->stockTotal();
-    $cantidad = $objCompraitemCon->buscarKey('cicantidad');
+    $cantidad = Data::buscarKey('cicantidad');
     if ($cantTotal >= $cantidad) {
         $rta = $objCompraitemCon->modificar();
         if (!$rta) {

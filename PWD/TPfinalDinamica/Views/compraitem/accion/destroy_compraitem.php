@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objConCompraItem = new CompraitemController();
-$data = $objConCompraItem->buscarKey('idcompraitem');
+$data = Data::buscarKey('idcompraitem');
 $respuesta = false;
 if($data != null){
    $rta = $objConCompraItem->eliminar();

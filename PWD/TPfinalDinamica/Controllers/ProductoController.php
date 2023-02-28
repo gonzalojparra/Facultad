@@ -4,18 +4,18 @@ class ProductoController extends MasterController{
 
     public function busqueda(){
         $arrayBusqueda = [];
-        $idproducto = $this->buscarKey('idproducto');
-        $pronombre = $this->buscarKey('pronombre');
-        $sinopsis = $this->buscarKey('sinopsis');
-        $procantstock = $this->buscarKey('procantstock');
-        $autor = $this->buscarKey('autor');
-        $precio = $this->buscarKey('precio');
-        $isbn = $this->buscarKey('isbn');
-        $categoria = $this->buscarKey('categoria');
+        $idproducto    = Data::buscarKey('idproducto');
+        $pronombre     = Data::buscarKey('pronombre');
+        $sinopsis      = Data::buscarKey('sinopsis');
+        $procantstock  = Data::buscarKey('procantstock');
+        $autor         = Data::buscarKey('autor');
+        $precio        = Data::buscarKey('precio');
+        $isbn          = Data::buscarKey('isbn');
+        $categoria     = Data::buscarKey('categoria');
 
         $foto = $this->getSlashesImg();
 
-        $prdeshabilitado = $this->buscarKey('prdeshabilitado');
+        $prdeshabilitado = Data::buscarKey('prdeshabilitado');
         $arrayBusqueda = [
             'idproducto' => $idproducto,
             'pronombre' => $pronombre,
@@ -59,7 +59,7 @@ class ProductoController extends MasterController{
         $respuesta['obj'] = null;
         $respuesta['error'] = '';
         $arrayBusqueda = [];
-        $arrayBusqueda['idproducto'] = $this->buscarKey('idproducto');
+        $arrayBusqueda['idproducto'] = Data::buscarKey('idproducto');
         $objProducto = new Producto();
         $rta = $objProducto->buscar($arrayBusqueda);
         if($rta['respuesta']){
@@ -68,7 +68,7 @@ class ProductoController extends MasterController{
         }else{
             $respuesta['error'] = $rta;
         }
-        return $respuesta;        
+        return $respuesta;
     }
 
     public function insertar(){

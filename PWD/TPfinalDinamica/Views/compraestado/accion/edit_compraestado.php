@@ -6,7 +6,7 @@ require( '../../../Vendor/phpmailer/phpmailer/src/Exception.php' );
 
 $objCompraEstadoTipoCon = new CompraestadotipoController();
 
-$idCompraEstado = $objCompraEstadoTipoCon->buscarKey('idcompraestado');
+$idCompraEstado = Data::buscarKey('idcompraestado');
 if( $idCompraEstado != NULL || $idCompraEstado !=  false ){
     $objCompraEstadoCon = new CompraestadoController();
     $rta = $objCompraEstadoCon->buscarId($idCompraEstado);
@@ -14,7 +14,7 @@ if( $idCompraEstado != NULL || $idCompraEstado !=  false ){
         //encontro el objCompraEstado
         $objCompraEstado = $rta['obj'];
         $ObjCompraEstadoTipoActual = $objCompraEstado->getObjCompraestadotipo();
-        $idCompraEstadoTipoPorParametro = $objCompraEstadoTipoCon->buscarKey('idcompraestadotipo');
+        $idCompraEstadoTipoPorParametro = Data::buscarKey('idcompraestadotipo');
         if( $idCompraEstadoTipoPorParametro == '2' || $idCompraEstadoTipoPorParametro == 2 ){
             // Opción Aceptada, resta stock.
             $objCompra = $objCompraEstado->getObjCompra(); 
@@ -47,7 +47,7 @@ if( $idCompraEstado != NULL || $idCompraEstado !=  false ){
                 }
                 // Cambiar estado tupla y generar una nueva de compraestado; 5
                 $idcompraestadotipo = 2;
-                $idCompraEstado = $objCompraEstadoCon->buscarKey( 'idcompraestado' );
+                $idCompraEstado = Data::buscarKey( 'idcompraestado' );
                 $rta = $objCompraEstadoCon->modificarEstado($idCompraEstado, $idcompraestadotipo);
                 if( $rta ){
                     $response = true;
@@ -101,7 +101,7 @@ if( $idCompraEstado != NULL || $idCompraEstado !=  false ){
                     $idcompraestadotipo = 1;
                     $cuerpoMail = 'Su compra ha sido iniciada!';
                 }
-                $idCompraEstado = $objCompraEstadoCon->buscarKey( 'idcompraestado' );
+                $idCompraEstado = Data::buscarKey( 'idcompraestado' );
                 $rta = $objCompraEstadoCon->modificarEstado($idCompraEstado, $idcompraestadotipo);
                 if( $rta ){
                     $response = true;

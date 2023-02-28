@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objRolCon = new RolController();
-$data = $objRolCon->buscarKey('idrol');
+$data = Data::buscarKey('idrol');
 $respuesta = false;
 if($data != null){
     $rta = $objRolCon->modificar();

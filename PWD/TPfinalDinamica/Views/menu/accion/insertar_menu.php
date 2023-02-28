@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objMenuCon = new MenuController();
-$data = $objMenuCon->buscarKey('menombre');
+$data = Data::buscarKey('menombre');
 $respuesta = false;
 if($data != null){
     $rta = $objMenuCon->insertar();

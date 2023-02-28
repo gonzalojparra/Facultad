@@ -75,7 +75,7 @@ class CompraitemController extends MasterController
         $respuesta['obj'] = null;
         $respuesta['error'] = '';
         $arrayBusqueda = [];
-        $arrayBusqueda['idcompraitem'] = $this->buscarKey('idcompraitem');
+        $arrayBusqueda['idcompraitem'] = Data::buscarKey('idcompraitem');
         $objCompIt = new Compraitem();
         $rta = $objCompIt->buscar($arrayBusqueda);
         if ($rta['respuesta']) {
@@ -90,10 +90,10 @@ class CompraitemController extends MasterController
     public function busqueda()
     {
         $arrayBusqueda = [];
-        $idcompraitem = $this->buscarKey('idcompraitem');
-        $idproducto = $this->buscarKey('idproducto');
-        $idcompra = $this->buscarKey('idcompra');
-        $cicantidad = $this->buscarKey('cicantidad');
+        $idcompraitem = Data::buscarKey('idcompraitem');
+        $idproducto = Data::buscarKey('idproducto');
+        $idcompra = Data::buscarKey('idcompra');
+        $cicantidad = Data::buscarKey('cicantidad');
 
         $arrayBusqueda = [
             'idcompraitem' => $idcompraitem,
@@ -123,7 +123,7 @@ class CompraitemController extends MasterController
 
     public function stockTotal()
     {
-        $idProducto['idproducto'] = $this->buscarKey('idproducto');
+        $idProducto['idproducto'] = Data::buscarKey('idproducto');
         $objetoProducto = new Producto();
         $busquedaProducto = $objetoProducto->buscar($idProducto);
         if ($busquedaProducto) {

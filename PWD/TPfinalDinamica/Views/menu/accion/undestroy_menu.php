@@ -1,7 +1,7 @@
 <?php
 require_once('../../../config.php');
 $objMenuCon = new MenuController();
-$data = $objMenuCon->buscarKey('idmenu');
+$data = Data::buscarKey('idmenu');
 $respuesta = false;
 if($data != null){
    $rta = $objMenuCon->Noeliminar();

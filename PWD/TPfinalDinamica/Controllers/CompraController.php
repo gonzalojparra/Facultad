@@ -5,9 +5,9 @@ class CompraController extends MasterController{
 
     public function busqueda() {
         $arrayBusqueda = [];
-        $idCompra = $this->buscarKey('idcompraestadotipo');
-        $cofecha = $this->buscarKey('cofecha');
-        $idusuario = $this->buscarKey('idusuario');
+        $idCompra = Data::buscarKey('idcompraestadotipo');
+        $cofecha = Data::buscarKey('cofecha');
+        $idusuario = Data::buscarKey('idusuario');
         $arrayBusqueda = [
             'idcompra' => $idCompra,
             'cofecha' => $cofecha,
@@ -29,7 +29,7 @@ class CompraController extends MasterController{
 
 
     public function buscarId() {
-        $idBusqueda = $this->buscarKey( 'idcompraestadotipo' );
+        $idBusqueda = Data::buscarKey( 'idcompraestadotipo' );
         if( $idBusqueda == false ){
             // Error
             $data['error'] = $this->warning( 'No se ha encontrado dicho registro' );
@@ -50,7 +50,7 @@ class CompraController extends MasterController{
     public function buscarIdDos() {
         $rta = false;
         $idBusqueda = [];
-        $idBusqueda['idcompra'] = $this->buscarKey('idcompra');
+        $idBusqueda['idcompra'] = Data::buscarKey('idcompra');
         $objCompra = new Compraestadotipo();
         $objEncontrado = $objCompra->buscar($idBusqueda);
         if($objEncontrado['respuesta']){
