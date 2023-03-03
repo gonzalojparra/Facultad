@@ -45,14 +45,14 @@ if( $objSession->getUsnombre() != null ){
                 <thead>
                     <tr>
                         <th field="idproducto" width="2%">Id</th>
-                        <th field="pronombre" width="10%">Nombre producto</th>
+                        <th field="pronombre" width="20%">Nombre producto</th>
                         <th field="sinopsis" width="20%">Sinopsis</th>
                         <th field="procantstock" width="5%">Stock</th>
-                        <th field="autor" width="10%">Autor</th>
+                        <th field="autor" width="20%">Protagonistas</th>
                         <th field="precio" width="5%">Precio</th>
-                        <th field="isbn" width="5%">ISBN</th>
+                        <th field="isbn" width="5%">UPC</th>
                         <th field="categoria" width="10%">Categoría</th>
-                        <th field="prdeshabilitado" width="10%">Deshabilitado</th>
+                        <!-- <th field="prdeshabilitado" width="10%">Deshabilitado</th> -->
                         <th field="foto" width="20%">Portada</th>
                     </tr>
                 </thead>
@@ -89,13 +89,13 @@ if( $objSession->getUsnombre() != null ){
                         <input name="procantstock" id="procantstock" class="easyui-textbox" required="true" label="Stock" style="width:100%;">
                     </div>
                     <div style="margin-bottom:10px;">
-                        <input name="autor" id="autor" class="easyui-textbox" required="true" label="Autor" style="width:100%;">
+                        <input name="autor" id="autor" class="easyui-textbox" required="true" label="Protagonistas" style="width:100%;">
                     </div>
                     <div style="margin-bottom:10px;">
                         <input name="precio" id="precio" class="easyui-textbox" required="true" label="Precio" style="width:100%;">
                     </div>
                     <div style="margin-bottom:10px;">
-                        <input name="isbn" id="isbn" class="easyui-textbox" required="true" label="ISBN" style="width:100%;">
+                        <input name="isbn" id="isbn" class="easyui-textbox" required="true" label="UPC" style="width:100%;">
                     </div>
                     <div style="margin-bottom:10px;">
                         <input name="categoria" id="categoria" class="easyui-textbox" required="true" label="Categoria" style="width:100%;">
@@ -140,13 +140,13 @@ if( $objSession->getUsnombre() != null ){
             <input name="procantstock" id="procantstock" class="easyui-textbox" required="true" label="Stock" style="width:100%;" readonly>
         </div>
         <div style="margin-bottom:10px;">
-            <input name="autor" id="autor" class="easyui-textbox" required="true" label="Autor" style="width:100%;" readonly>
+            <input name="autor" id="autor" class="easyui-textbox" required="true" label="Protagonistas" style="width:100%;" readonly>
         </div>
         <div style="margin-bottom:10px;">
             <input name="precio" id="precio" class="easyui-textbox" required="true" label="Precio" style="width:100%;" readonly>
         </div>
         <div style="margin-bottom:10px;">
-            <input name="isbn" id="isbn" class="easyui-textbox" required="true" label="ISBN" style="width:100%;" readonly>
+            <input name="isbn" id="isbn" class="easyui-textbox" required="true" label="UPC" style="width:100%;" readonly>
         </div>
         <div style="margin-bottom:10px;">
             <input name="categoria" id="categoria" class="easyui-textbox" required="true" label="Categoria" style="width:100%;" readonly>

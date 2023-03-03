@@ -48,7 +48,7 @@
                             <p class="border border-2 border-danger p-2 mb-2 rounded-pill d-flex justify-content-center"><?php echo $message ?></p>
                             <?php endif; ?>
 
-                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registro</p>
+                            <!-- <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registro</p>
                             
                             <form class="mx-1 mx-md-4" action="../accion/accionSignup.php" method="POST" id="form">
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -79,12 +79,27 @@
                                     <button class="btn btn-primary btn-lg" type="submit" id="submit">Registrarse</button>
                                 </div>
                             
-                            </form>
-                            
-                            <div class="mt-3">
-                                <p class="mb-0  text-center">Ya posee una cuenta?
-                                    <a href="login.php" class="text-primary fw-bold">Inicie sesión aquí</a>
-                                </p>
+                            </form> -->
+
+                            <div class="login-box">
+                                <p>Registro</p>
+                                <form>
+                                <div class="user-box">
+                                        <input class="form-control" name="usnombre" id="usnombre" type="text">
+                                        <label for="usnombre" class="form-label">Usuario</label>
+                                    </div>
+                                    <div class="user-box">
+                                        <input class="form-control" name="usmail" id="mail" type="email">
+                                        <label for="mail" class="form-label">Email</label>
+                                    </div>
+                                    <div class="user-box">
+                                        <input class="form-control" name="uspass" id="uspass" type="password">
+                                        <label class="form-label">Contraseña</label>
+                                    </div>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button class="btn btn-primary btn-lg" type="submit" id="submit">Registrarse</button>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
