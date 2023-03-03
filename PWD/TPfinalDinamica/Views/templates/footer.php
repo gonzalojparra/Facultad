@@ -3,16 +3,11 @@
         <div class="box">
             <h3>Nuestras sucursales</h3>
             <a href="#"><i class="fas fa-map-marker-alt"></i>La FAI</a>
-            <a href="#"><i class="fas fa-map-marker-alt"></i>La casa del Masi</a>
-            <a href="#"><i class="fas fa-map-marker-alt"></i>La casa del Jero</a>
-            <a href="#"><i class="fas fa-map-marker-alt"></i>La casa de Mar</a>
-            <a href="#"><i class="fas fa-map-marker-alt"></i>La casa del Gonza</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i>Mi casita</a>
         </div>
         <div class="box">
             <h3>Quick links</h3>
             <a href="#"><i class="fas fa-arrow-right"></i>Home</a>
-            <a href="#"><i class="fas fa-arrow-right"></i>Ingresos</a>
-            <a href="#"><i class="fas fa-arrow-right"></i>Reviews</a>
             <a href="#"><i class="fas fa-arrow-right"></i>Contacto</a>
         </div>
         <div class="box">
@@ -27,7 +22,7 @@
         <a href="#" class="fab fa-instagram"></a>
     </div>
     <div class="credit">
-        <p>© Developed by Gonzalo Parra, Jerónimo Rojo, Marcia Klimisch & Maximiliano Ariel Hitter | 2022</p>
+        <p>© Developed by Gonzalo Parra | 2022</p>
     </div>
 </footer>
 

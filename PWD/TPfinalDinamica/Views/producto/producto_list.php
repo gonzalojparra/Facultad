@@ -279,7 +279,7 @@ if( $objSession->getUsnombre() != null ){
 
 <style type="text/css">
     .producto {
-        background-color: #006d31;
+        background-color: #121212;
         color: white;
     }
 </style>

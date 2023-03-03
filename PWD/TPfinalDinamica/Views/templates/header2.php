@@ -102,7 +102,7 @@ $rta = $objSession->activa();
 
 
             <div class="header-1">
-                <a href="../home/index.php" class="logo"><i class="fas fa-book"></i> Yonny</a>
+                <a href="../home/index.php" class="logo"><i class="fa-duotone fa-camera-movie"></i> Chaplin</a>
 
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                     <li class="nav-item dropdown user">

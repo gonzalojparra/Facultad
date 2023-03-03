@@ -14,8 +14,8 @@
 
 /* Variables pa los colorcitos */
 :root {
-    --green: #27ae60;
-    --dark-color: #219150;
+    --green: #6b010a;
+    --dark-color: #2e0116;
     --black: #444;
     --light-color: #666;
     --border: .1rem solid rgba(0, 0, 0, .1);
@@ -71,7 +71,7 @@ li {
 }
 
 .header-1 {
-    background: #fff;
+    background: #110e0e;
     padding: 1.5rem 9%;
     display: flex;
     align-items: center;
@@ -278,11 +278,247 @@ li {
     cursor: pointer;
 }
 
-.home {
+/* .home {
     background: url(../../Public/img/banner-bg.jpg) no-repeat;
     background-size: cover;
     background-position: center;
+} */
+
+.home {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(12,3,51,0.3),rgba(12,3,51,0.3));
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.background-video {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.content h1 {
+    font-size: 150px;
+    -webkit-text-stroke: 2.3px #fff;
+    color: transparent;
+    font-weight: 600;
+    transition: 0.15s;
+}
+
+.content h1:hover {
+    color: #fff;
+}
+
+/* Comprar películas */
+.fancy {
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: 25px;
+    /* margin: 0; */
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+}
+   
+.fancy::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: black;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+}
+   
+.fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+}
+   
+.fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+   
+.fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+   
+.fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+   
+.fancy:hover {
+    color: white;
+    background: black;
+}
+   
+.fancy:hover::before {
+    width: 0.9375rem;
+    background: white;
+}
+   
+.fancy:hover .text {
+    color: white;
+    padding-left: 1.5em;
+}
+   
+.fancy:hover .top-key {
+    left: -2px;
+    width: 0px;
+}
+   
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+}
+
+   .button button {
+    position: relative;
+    padding: 1em 1.8em;
+    outline: none;
+    border: 1px solid #303030;
+    background: #212121;
+    color: #6b010a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    overflow: hidden;
+    transition: 0.2s;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+   }
+   
+   .button button:hover {
+    box-shadow: 0 0 10px #6b010a, 0 0 25px #2e0116, 0 0 50px #6b010a;
+    transition-delay: 0.6s;
+   }
+   
+   .button button span {
+    position: absolute;
+   }
+   
+   .button button span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #6b010a);
+   }
+   
+   .button button:hover span:nth-child(1) {
+    left: 100%;
+    transition: 0.7s;
+   }
+   
+   .button button span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2e0116);
+   }
+   
+   .button button:hover span:nth-child(3) {
+    right: 100%;
+    transition: 0.7s;
+    transition-delay: 0.35s;
+   }
+   
+   .button button span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #6b010a);
+   }
+   
+   .button button:hover span:nth-child(2) {
+    top: 100%;
+    transition: 0.7s;
+    transition-delay: 0.17s;
+   }
+   
+   .button button span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #2e0116);
+   }
+   
+   .button button:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 0.7s;
+    transition-delay: 0.52s;
+   }
+   
+   .button button:active {
+    background: #6b010a;
+    background: linear-gradient(to top right, #6b010a, #2e0116);
+    color: #bfbfbf;
+    box-shadow: 0 0 8px #6b010a, 0 0 8px #2e0116, 0 0 8px #6b010a;
+    transition: 0.1s;
+   }
+   
+   .button button:active span:nth-child(1) 
+   span:nth-child(2) 
+   span:nth-child(2) 
+   span:nth-child(2) {
+    transition: none;
+    transition-delay: none;
+   }
+   
 
 .row {
     display: flex;
@@ -391,7 +627,7 @@ li {
 }
 
 .oferta {
-    background: #f3f3f3;
+    background: #121212;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -425,7 +661,11 @@ li {
 }
 
 .oferta .image img {
-    width: 100%;
+    display: inline-block;
+    float: right;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .reviews-slider .box {
@@ -581,10 +821,11 @@ li {
 }
 
 body {
-    background-color: #219150;
+    background-color: #080808;
 }
+
 footer {
-    background-color: white;
+    background-color: #121212;
 }
 
 /* Media queries */

@@ -282,7 +282,7 @@ $arrayRoles = $objUsuRolCon->getRoles();
 
 <style type="text/css">
     .menu {
-        background-color: #006d31;
+        background-color: #121212;
         color: white;
     }
 </style>

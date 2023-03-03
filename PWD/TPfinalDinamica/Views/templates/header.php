@@ -65,7 +65,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-1">
-            <a href="../home/index.php" class="logo"><i class="fas fa-book"></i> Yonny</a>
+            <a href="../home/index.php" class="logo"><i class="fa-duotone fa-camera-movie"></i> Chaplin</a>
                 <div class="icons">
                     <div id="search-btn" class="fas fa-search"></div>
                     <a href="#" class="fas fa-shopping-cart"></a>

@@ -128,7 +128,7 @@ try {
 
 <style type="text/css">
     .rol {
-        background-color: #006d31;
+        background-color: #121212;
         color: white;
     }
 </style>

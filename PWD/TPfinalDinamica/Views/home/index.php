@@ -10,7 +10,22 @@
     
     <!-- Home -->
     <section class="home" id="home">
-        <div class="row">
+        
+        <video autoplay loop muted plays-inline class="background-video">
+            <source src="../../Public/img/background.mp4" type="video/mp4">
+        </video>
+
+        <div class="content">
+            <h1>Sir Chaplin</h1>
+            <a class="fancy" href="../producto/producto_list.php">
+                <span class="top-key"></span>
+                <span class="text">Comprar películas</span>
+                <span class="bottom-key-1"></span>
+                <span class="bottom-key-2"></span>
+            </a>
+        </div>
+
+        <!-- <div class="row">
             <div class="content">
                 <h3>Al 75% de descuento</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut ad enim debitis delectus a voluptates optio qui commodi, ratione totam.</p>
@@ -19,19 +34,19 @@
 
             <div class="swiper books-slider">
                 <div class="swiper-wrapper">
-                    <?php foreach( $listaProductos as $producto ){
+                    <?php /* foreach( $listaProductos as $producto ){
                         $data = $producto->dameDatos();
                         $foto = $data['foto'];
                         echo "<a href=\"../producto/producto_list.php\" class=\"swiper-slide\">$foto</a>";
-                    } ?>
+                    } */ ?>
                 </div>
                 <img src="../../Public/img/stand.png" class="stand" alt="">
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- Iconcitos fachas -->
-    <section class="icons-container">
+    <!-- <section class="icons-container">
         <div class="icons">
             <i class="fas fa-plane"></i>
             <div class="content">
@@ -168,21 +183,31 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="oferta">
         <div class="content">
-            <h3>Oferta del dia!</h3>
-            <h1>50% de descuento</h1>
-            <p>Conoce el caso de Sherlock Holmes y las travesías por la Universidad de la UNCO. Explora por el mundo de la programación autodidáctica y fatídica, los sinsabores de la falta de papel en los momentos menos indicados...</p>
-            <a href="#" class="btn">Compralo ya!</a>
+            <h3>Último ingreso</h3>
+            <h1>CREED III</h1>
+            <p>De la mano de Metro Goldwyn Mayer Pictures llega "Creed III", con Michael B. Jordan debutando como director y regresando en el papel de Adonis Creed en la tercera entrega de la exitosa franquicia.</p>
+            <a href="../producto/producto_list.php">
+            <div class="button">
+                <button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> Comprar ya!
+                </button>
+            </div>
+            </a>
+            <!-- <a href="#" class="btn">Compralo ya!</a> -->
         </div>
         <div class="image">
-            <img src="../../Public/img/oferta.jpg" alt="compralo wachin">
+            <img src="../../Public/img/Creed_III-802094802-large.jpg" alt="compralo wachin">
         </div>
     </section>
 
-    <section class="reviews" id="reviews">
+    <!-- <section class="reviews" id="reviews">
         <h1 class="heading"><span>Reviews de clientes</span></h1>
         <div class="swiper reviews-slider">
             <div class="swiper-wrapper">
@@ -259,7 +284,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="newsletter">
         <form action="" method="">

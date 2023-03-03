@@ -320,7 +320,7 @@ try {
 
 <style type="text/css">
     .usuario {
-        background-color: #006d31;
+        background-color: #121212;
         color: white;
     }
 </style>
