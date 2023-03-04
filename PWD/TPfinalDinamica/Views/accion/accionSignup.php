@@ -4,16 +4,18 @@ require_once( '../templates/header.php');
 $objUsuario = new UsuarioController();
 $objUsuarioRol = new UsuarioRolController();
 
-$data = $objUsuario->getDatos();
+$data = Data::getDatos();
 
 $respuesta = $objUsuario->insertar();
-if( $respuesta['respuesta'] ){
-    echo('Usuario creado piolon');
+$usuarioCreado = $objUsuario->buscarObjUsuario2();
+$rta = $objUsuario->cargarNuevoCliente( $usuarioCreado['obj'] );
+
+if( $rta == false ){
+    echo('Ocurrió un error en la creación del usuario');
+} else {
     ?>
     <script>
-        location.href = '../logs/login.php';
+        location.href = '../home/index.php';
     </script>
     <?php
-} else {
-    echo('Usuario creado pa la wea');
 }

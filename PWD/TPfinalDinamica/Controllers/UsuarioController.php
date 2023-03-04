@@ -85,13 +85,41 @@ class UsuarioController extends MasterController {
     public function insertar(){
         $data = $this->busqueda();
         $objUsuario = new Usuario();
+
         $objUsuario->setIdusuario($data['idusuario']);
         $objUsuario->setUsnombre($data['usnombre']);
         $objUsuario->setUspass($data['uspass']);
         $objUsuario->setUsmail($data['usmail']);
         $objUsuario->setUsdeshabilitado($data['usdeshabilitado']);
-        $rta = $objUsuario->insertar();
+        $operacionUsuario = $objUsuario->insertar();
+
+        if( $operacionUsuario['respuesta'] == false ){
+            $rta = $operacionUsuario['errorInfo'];
+        } else {
+            $rta = $operacionUsuario['respuesta'];
+        }
         return $rta;
+    }
+
+    public function cargarNuevoCliente( $objUsuario ){
+        $objRolController = new RolController();
+        $objUsuarioRol = new Usuariorol();
+
+        $listaRoles = $objRolController->listarTodo();
+        $objRolCliente = $listaRoles[1];
+        
+        $objUsuarioRol->setIdur( null );
+        $objUsuarioRol->setObjUsuario( $objUsuario );
+        $objUsuarioRol->setObjRol( $objRolCliente );
+
+        $operacion = $objUsuarioRol->insertar();
+        if( $operacion['respuesta'] == false ){
+            $rta = $operacion['errorInfo'];
+        } else {
+            $rta = $operacion['respuesta'];
+        }
+        return $rta;
+        
     }
 
     /* public function insertar( $data ){

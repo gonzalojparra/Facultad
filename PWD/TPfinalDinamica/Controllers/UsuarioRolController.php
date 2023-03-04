@@ -212,4 +212,6 @@ class UsuarioRolController extends MasterController {
         $objRol = null;
         return $data;
     }
+
+    
 }

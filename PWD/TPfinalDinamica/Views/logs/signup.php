@@ -83,7 +83,7 @@
 
                             <div class="login-box">
                                 <p>Registro</p>
-                                <form>
+                                <form action="../accion/accionSignup.php" method="POST" id="form">
                                 <div class="user-box">
                                         <input class="form-control" name="usnombre" id="usnombre" type="text">
                                         <label for="usnombre" class="form-label">Usuario</label>
